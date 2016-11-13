@@ -1,0 +1,19 @@
+.well {
+    height: 150px;
+}
+
+.well-success {
+    background-color: #449D44;
+}
+
+.well-info {
+    background-color: #31B0D5;
+}
+
+.well-warning {
+    background-color: #EC971F;
+}
+
+.well-danger {
+    background-color: #C9302C;
+}
