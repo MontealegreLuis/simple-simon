@@ -12,6 +12,9 @@
      * @constructor
      */
     function Simon(board, generator) {
+        /**
+         * @type {Array} Contains the random sequence
+         */
         var sequence;
 
         /**
@@ -40,6 +43,7 @@
          * Verifies that the current player's is correct
          *
          * @param {Array} playerSequence
+         * @return {Boolean}
          */
         this.verify = function (playerSequence) {
             return sequence.toString() == playerSequence.slice(0, sequence.length).toString();

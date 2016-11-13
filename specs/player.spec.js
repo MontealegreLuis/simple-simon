@@ -4,10 +4,11 @@
 "use strict";
 
 describe("Player", function () {
-    var generator, board;
+    var generator, board, simon, player;
 
     beforeEach(function () {
         board = {
+            animate: function (box) {},
             gameOver: function (sequence) {}
         };
         generator = {
@@ -16,12 +17,22 @@ describe("Player", function () {
                 return this.sequence.shift();
             }
         };
+        player = new Player(board);
+        simon = new Simon(board, generator);
+    });
+
+    it("animates the current box", function () {
+        var simonNumber = 3;
+        spyOn(board, "animate");
+
+        simon.start();
+        player.play(simonNumber);
+
+        expect(board.animate).toHaveBeenCalledWith(simonNumber);
     });
 
     it("verifies a sequence with a single element", function () {
-        var player = new Player(null);
         var simonNumber = 3;
-        var simon = new Simon(board, generator);
 
         simon.start();
         player.play(simonNumber);
@@ -29,9 +40,7 @@ describe("Player", function () {
         expect(player.matches(simon)).toBe(true);
     });
     it("verifies a sequence with several elements", function () {
-        var player = new Player(null);
         var simonNumbers = [3, 2, 1, 0];
-        var simon = new Simon(board, generator);
 
         simon.start();
         player.play(simonNumbers[0]);
@@ -45,8 +54,7 @@ describe("Player", function () {
         expect(player.matches(simon)).toBe(true);
     });
     it("updates the board if player does not win", function () {
-        var player = new Player(board);
-        var simon = {
+        simon = {
             verify: function (sequence) { return false; }
         };
         spyOn(board, "gameOver");
