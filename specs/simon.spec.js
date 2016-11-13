@@ -18,18 +18,18 @@ describe("Simon", function () {
         };
     });
 
-    it("can verify if player's sequence is correct after first round", function () {
+    it("verifies if player's sequence is correct after first round", function () {
         var simon = new Simon(null, generator);
 
-        simon.firstRound();
+        simon.start();
 
         expect(simon.verify([3])).toBe(true);
     });
 
-    it("can verify if player's sequence is correct after several rounds", function () {
+    it("verifies if player's sequence is correct after several rounds", function () {
         var simon = new Simon(null, generator);
 
-        simon.firstRound();
+        simon.start();
         simon.nextRound();
         simon.nextRound();
         simon.nextRound();
@@ -40,7 +40,7 @@ describe("Simon", function () {
     it("animates the board with the current sequence", function () {
         var simon = new Simon(board, generator);
         spyOn(board, "animate");
-        simon.firstRound();
+        simon.start();
         simon.nextRound();
         simon.nextRound();
 

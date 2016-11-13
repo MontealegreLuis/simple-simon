@@ -17,7 +17,7 @@
         /**
          * Populate the sequence with the first random value
          */
-        this.firstRound = function() {
+        this.start = function() {
             sequence = [];
             this.nextRound();
         };
@@ -42,7 +42,7 @@
          * @param {Array} playerSequence
          */
         this.verify = function (playerSequence) {
-            return sequence.toString() == playerSequence.toString();
+            return sequence.toString() == playerSequence.slice(0, sequence.length).toString();
         };
     }
 
