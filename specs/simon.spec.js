@@ -32,9 +32,19 @@ describe("Simon", function () {
         simon.start();
         simon.nextRound();
         simon.nextRound();
+
+        expect(simon.verify([3, 2, 1])).toBe(true);
+    });
+
+    it("verifies if player's sequence is correct after all rounds", function () {
+        var simon = new Simon(null, generator);
+
+        simon.start();
+        simon.nextRound();
+        simon.nextRound();
         simon.nextRound();
 
-        expect(simon.verify([3, 2, 1, 0])).toBe(true);
+        expect(simon.isComplete([3, 2, 1, 0])).toBe(true);
     });
 
     it("animates the board with the current sequence", function () {

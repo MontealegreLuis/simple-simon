@@ -48,6 +48,16 @@
         this.verify = function (playerSequence) {
             return sequence.toString() == playerSequence.slice(0, sequence.length).toString();
         };
+
+        /**
+         * Returns true only if the whole sequence is correct
+         *
+         * @param {Array} playerSequence
+         * @returns {Boolean}
+         */
+        this.isComplete= function(playerSequence) {
+            return this.verify(playerSequence) && sequence.length === playerSequence.length;
+        };
     }
 
     window.Simon = Simon;

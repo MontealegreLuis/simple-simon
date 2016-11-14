@@ -9,7 +9,6 @@ describe("Player", function () {
     beforeEach(function () {
         board = {
             animate: function (box) {},
-            gameOver: function (sequence) {}
         };
         generator = {
             sequence: [3, 2, 1, 0],
@@ -26,7 +25,7 @@ describe("Player", function () {
         spyOn(board, "animate");
 
         simon.start();
-        player.play(simonNumber);
+        expect(player.matches(simonNumber, simon)).toBe(true);
 
         expect(board.animate).toHaveBeenCalledWith(simonNumber);
     });
@@ -35,31 +34,29 @@ describe("Player", function () {
         var simonNumber = 3;
 
         simon.start();
-        player.play(simonNumber);
 
-        expect(player.matches(simon)).toBe(true);
+        expect(player.matches(simonNumber, simon)).toBe(true);
     });
     it("verifies a sequence with several elements", function () {
         var simonNumbers = [3, 2, 1, 0];
 
         simon.start();
-        player.play(simonNumbers[0]);
+        expect(player.matches(simonNumbers[0], simon)).toBe(true);
         simon.nextRound();
-        player.play(simonNumbers[1]);
+        expect(player.matches(simonNumbers[1], simon)).toBe(true);
         simon.nextRound();
-        player.play(simonNumbers[2]);
+        expect(player.matches(simonNumbers[2], simon)).toBe(true);
         simon.nextRound();
-        player.play(simonNumbers[3]);
+        expect(player.matches(simonNumbers[3], simon)).toBe(true);
 
-        expect(player.matches(simon)).toBe(true);
+        expect(player.isWinner(simon)).toBe(true);
     });
     it("updates the board if player does not win", function () {
+        var wrongNumber = 10;
         simon = {
-            verify: function (sequence) { return false; }
+            verify: function () { return false; }
         };
-        spyOn(board, "gameOver");
 
-        expect(player.matches(simon)).toBe(false);
-        expect(board.gameOver).toHaveBeenCalled();
+        expect(player.matches(wrongNumber, simon)).toBe(false);
     });
 });

@@ -22,7 +22,7 @@
          *
          * @param {Number} box
          */
-        this.play = function (box) {
+        var play = function (box) {
             sequence = sequence || [];
             sequence.push(box);
             board.animate(box);
@@ -32,13 +32,20 @@
          * @param simon
          * @returns boolean
          */
-        this.matches = function (simon) {
-            var won = simon.verify(sequence);
-            if (!won) {
-                board.gameOver();
-            }
-            return won;
+        this.matches = function (box, simon) {
+            play(box);
+            return simon.verify(sequence);
         };
+
+        /**
+         * Verifies if the whole sequence is correct
+         *
+         * @param {Simon} simon
+         * @returns {Boolean}
+         */
+        this.isWinner = function (simon) {
+            return simon.isComplete(sequence);
+        }
     }
 
     window.Player = Player;
