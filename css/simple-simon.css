@@ -1,5 +1,6 @@
 .well {
     height: 150px;
+    opacity: .5;
 }
 
 .well-success {
