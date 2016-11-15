@@ -36,7 +36,7 @@
          * Use the sequence to animate the corresponding boxes in the board
          */
         this.animate = function () {
-            board.animate(sequence);
+            board.animateSequence(sequence);
         };
 
         /**

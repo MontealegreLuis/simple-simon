@@ -8,7 +8,7 @@ describe("Simon", function () {
 
     beforeEach(function () {
         board = {
-            animate: function (sequence) {}
+            animateSequence: function (sequence) {}
         };
         generator = {
             sequence: [3, 2, 1, 0],
@@ -49,13 +49,13 @@ describe("Simon", function () {
 
     it("animates the board with the current sequence", function () {
         var simon = new Simon(board, generator);
-        spyOn(board, "animate");
+        spyOn(board, "animateSequence");
         simon.start();
         simon.nextRound();
         simon.nextRound();
 
         simon.animate([3, 2, 1]);
 
-        expect(board.animate).toHaveBeenCalledWith([3, 2, 1]);
+        expect(board.animateSequence).toHaveBeenCalledWith([3, 2, 1]);
     })
 });

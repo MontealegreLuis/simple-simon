@@ -8,7 +8,7 @@ describe("Player", function () {
 
     beforeEach(function () {
         board = {
-            animate: function (box) {},
+            animateBox: function (box) {},
         };
         generator = {
             sequence: [3, 2, 1, 0],
@@ -22,12 +22,12 @@ describe("Player", function () {
 
     it("animates the current box", function () {
         var simonNumber = 3;
-        spyOn(board, "animate");
+        spyOn(board, "animateBox");
 
         simon.start();
         expect(player.matches(simonNumber, simon)).toBe(true);
 
-        expect(board.animate).toHaveBeenCalledWith(simonNumber);
+        expect(board.animateBox).toHaveBeenCalledWith(simonNumber);
     });
 
     it("verifies a sequence with a single element", function () {
@@ -37,17 +37,17 @@ describe("Player", function () {
 
         expect(player.matches(simonNumber, simon)).toBe(true);
     });
-    it("verifies a sequence with several elements", function () {
+    it("verifies a full sequence with several elements", function () {
         var simonNumbers = [3, 2, 1, 0];
 
         simon.start();
-        expect(player.matches(simonNumbers[0], simon)).toBe(true);
+        player.matches(simonNumbers[0], simon);
         simon.nextRound();
-        expect(player.matches(simonNumbers[1], simon)).toBe(true);
+        player.matches(simonNumbers[1], simon);
         simon.nextRound();
-        expect(player.matches(simonNumbers[2], simon)).toBe(true);
+        player.matches(simonNumbers[2], simon);
         simon.nextRound();
-        expect(player.matches(simonNumbers[3], simon)).toBe(true);
+        player.matches(simonNumbers[3], simon);
 
         expect(player.isWinner(simon)).toBe(true);
     });

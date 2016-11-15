@@ -25,10 +25,12 @@
         var play = function (box) {
             sequence = sequence || [];
             sequence.push(box);
-            board.animate(box);
+            board.animateBox(box);
         };
 
         /**
+         * Add the box to the sequence and verify if the current sequence is correct
+         *
          * @param simon
          * @returns boolean
          */
