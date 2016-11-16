@@ -15,7 +15,7 @@
         /**
          * @type {Array} Contains the random sequence
          */
-        var sequence;
+        var sequence = [];
 
         /**
          * Populate the sequence with the first random value
