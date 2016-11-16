@@ -10,19 +10,18 @@
         };
         var self = this;
         this.animate = function (gameSequence) {
+            index = gameSequence !== undefined ? 0 : index;
             sequence = gameSequence || sequence;
             $boxes
                 .eq(sequence[index])
                 .animate({opacity: 1})
-                .animate({opacity: .5}, 1000, this.animateNext)
+                .animate({opacity: .5}, {duration: 1000, complete: this.animateNext})
             ;
         };
         this.animateNext = function() {
             index++;
             if (hasNext()) {
                 self.animate();
-            } else {
-                index = 0;
             }
         }
     }

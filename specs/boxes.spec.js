@@ -24,8 +24,8 @@ describe("Boxes", function () {
     it("animates a sequence with several elements", function () {
         var $boxes = {
             eq: function() {},
-            animate: function(property, time, callback) {
-                if (callback) callback.call();
+            animate: function(property, options) {
+                if (options && options.complete) options.complete.call();
 
                 return this;
             }
