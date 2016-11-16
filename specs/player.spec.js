@@ -59,4 +59,12 @@ describe("Player", function () {
 
         expect(player.matches(wrongNumber, simon)).toBe(false);
     });
+    it("resets its sequence", function () {
+        var simon = new Simon(null, null);
+
+        player.restart();
+
+        // Comparing 2 empty sequence shouldbe true
+        expect(player.isWinner(simon)).toBe(true);
+    })
 });

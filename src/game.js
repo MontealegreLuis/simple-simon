@@ -4,6 +4,12 @@
 (function (window) {
     "use strict";
 
+    /**
+     * @param {Board} board
+     * @param {Simon} simon
+     * @param {Player} player
+     * @constructor
+     */
     function Game(board, simon, player) {
         /**
          * Generates the first random element in the sequence and animates the board
@@ -26,6 +32,7 @@
                 return;
             }
             if (player.isWinner(simon)) {
+                player.restart();
                 simon.nextRound();
                 simon.animate();
             }

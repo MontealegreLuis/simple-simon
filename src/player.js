@@ -31,7 +31,8 @@
         /**
          * Add the box to the sequence and verify if the current sequence is correct
          *
-         * @param simon
+         * @param {Number} box
+         * @param {Simon} simon
          * @returns boolean
          */
         this.matches = function (box, simon) {
@@ -47,6 +48,14 @@
          */
         this.isWinner = function (simon) {
             return simon.isComplete(sequence);
+        }
+
+        /**
+         * The player sequence needs to be cleaned up every time it guesses the
+         * current Simon's sequence
+         */
+        this.restart = function() {
+            sequence = [];
         }
     }
 

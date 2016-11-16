@@ -57,7 +57,8 @@ describe("Game", function () {
     it("generates a new round if the player's sequence is correct and complete", function () {
         var player = {
             matches: function () { return true; },
-            isWinner: function () { return true; }
+            isWinner: function () { return true; },
+            restart: function () {}
         };
         var simon = {
             nextRound: function(){},
@@ -65,11 +66,13 @@ describe("Game", function () {
         };
         spyOn(simon, "nextRound");
         spyOn(simon, "animate");
+        spyOn(player, "restart");
 
         var game = new Game(null, simon, player);
         game.play(5);
 
         expect(simon.nextRound).toHaveBeenCalled();
         expect(simon.animate).toHaveBeenCalled();
+        expect(player.restart).toHaveBeenCalled();
     });
 });
