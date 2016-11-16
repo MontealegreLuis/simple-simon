@@ -15,8 +15,8 @@ describe("Boxes", function () {
         };
         spyOn($boxes, "eq").and.returnValue($boxes);
 
-        var boxes = new Boxes($boxes, [2]);
-        boxes.animate();
+        var boxes = new Boxes($boxes);
+        boxes.animate([2]);
 
         expect($boxes.eq).toHaveBeenCalledWith(2);
     });
@@ -32,8 +32,8 @@ describe("Boxes", function () {
         };
         spyOn($boxes, "eq").and.returnValues($boxes, $boxes, $boxes);
 
-        var boxes = new Boxes($boxes, [4, 3, 0]);
-        boxes.animate();
+        var boxes = new Boxes($boxes);
+        boxes.animate([4, 3, 0]);
 
         expect($boxes.eq).toHaveBeenCalledWith(4);
         expect($boxes.eq).toHaveBeenCalledWith(3);
