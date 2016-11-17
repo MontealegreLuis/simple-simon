@@ -1,4 +1,6 @@
-# Simple simon game
+# Simple Simon Game
+
+[![Build Status](https://travis-ci.org/MontealegreLuis/simple-simon.svg?branch=master)](https://travis-ci.org/MontealegreLuis/simple-simon)
 
 ## Tests
 
