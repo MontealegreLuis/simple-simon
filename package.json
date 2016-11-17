@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "test": "testem ci"
+  },
+  "license": "MIT"
+}

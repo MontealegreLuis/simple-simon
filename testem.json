@@ -3,8 +3,14 @@
   "launch_in_dev": [
     "Chrome"
   ],
+  "launch_in_ci": [
+    "PhantomJS"
+  ],
   "src_files": [
     "src/**/*.js",
     "specs/**/*.js"
+  ],
+  "src_files_ignore": [
+    "src/app.js"
   ]
 }
