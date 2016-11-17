@@ -7,11 +7,7 @@ describe("Boxes", function () {
     it("animates a sequence with a single element", function () {
         var $boxes = {
             eq: function() { return this; },
-            animate: function(property, time, callback) {
-                if (callback) callback.call();
-
-                return this;
-            }
+            animate: function() { return this; }
         };
         spyOn($boxes, "eq").and.returnValue($boxes);
 
