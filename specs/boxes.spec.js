@@ -24,7 +24,7 @@ describe("Boxes", function () {
 
         var boxes = new Boxes($boxes, boxAnimation);
 
-        boxes.animate([2]);
+        boxes.animateBox(2);
 
         expect($boxes.eq).toHaveBeenCalledWith(2);
     });
@@ -33,7 +33,7 @@ describe("Boxes", function () {
         var $boxes = {};
 
         var boxes = new Boxes($boxes, boxAnimation);
-        boxes.animate([4, 3, 0]);
+        boxes.animateSequence([4, 3, 0]);
 
         jasmine.clock().tick(1001);
         jasmine.clock().tick(1000);

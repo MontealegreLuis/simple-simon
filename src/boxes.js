@@ -6,13 +6,14 @@
         var index = 0;
         var defaultDuration = 1000;
         var sequence;
-        var hasNext = function () {
+        var self = this;
+        var moreBoxes = function () {
             return index < sequence.length;
         };
         var animateBox = customAnimation || function() {
-            animateSingleBox(sequence[index]);
+            self.animateBox(sequence[index]);
             index++;
-            if (!hasNext()) {
+            if (!moreBoxes()) {
                 clearInterval(animateBox.intervalId)
             }
         };
@@ -20,7 +21,7 @@
         /**
          * @param {Number} box
          */
-        var animateSingleBox = function (box) {
+        this.animateBox = function (box) {
             $boxes
                 .eq(box)
                 .animate({opacity: 1})
@@ -31,11 +32,7 @@
         /**
          * @param {Array} gameSequence
          */
-        this.animate = function (gameSequence) {
-            if (gameSequence.length === 1) {
-                animateSingleBox(gameSequence[0]);
-                return;
-            }
+        this.animateSequence = function (gameSequence) {
             sequence = gameSequence;
             index = 0;
             animateBox.intervalId = setInterval(animateBox, defaultDuration);

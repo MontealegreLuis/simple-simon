@@ -12,10 +12,10 @@
         this.gameOver = function() {
         };
         this.animateSequence = function(sequence) {
-            boxes.animate(sequence);
+            boxes.animateSequence(sequence);
         };
         this.animateBox = function(index) {
-            boxes.animate([index]);
+            boxes.animateBox(index);
         };
     }
 

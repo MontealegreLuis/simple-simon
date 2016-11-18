@@ -6,27 +6,27 @@
 describe("Board", function () {
     it("animates a full sequence", function () {
         var $boxes = {
-            animate: function (sequence) {}
+            animateSequence: function () {}
         };
-        spyOn($boxes, "animate");
+        spyOn($boxes, "animateSequence");
         var board = new Board($boxes);
         var sequence = [3, 1, 0, 2];
 
         board.animateSequence(sequence);
 
-        expect($boxes.animate).toHaveBeenCalledWith(sequence);
+        expect($boxes.animateSequence).toHaveBeenCalledWith(sequence);
     });
 
     it("animates a single box", function () {
         var $boxes = {
-            animate: function (sequence) {}
+            animateBox: function (sequence) {}
         };
-        spyOn($boxes, "animate");
+        spyOn($boxes, "animateBox");
         var board = new Board($boxes);
         var box = 3;
 
         board.animateBox(box);
 
-        expect($boxes.animate).toHaveBeenCalledWith([box]);
+        expect($boxes.animateBox).toHaveBeenCalledWith(box);
     });
 });
