@@ -19,7 +19,7 @@ describe("Simon", function () {
     });
 
     it("verifies if player's sequence is correct after first round", function () {
-        var simon = new Simon(null, generator);
+        var simon = new Simon(null, new Sequence(), generator);
 
         simon.start();
 
@@ -27,7 +27,7 @@ describe("Simon", function () {
     });
 
     it("verifies if player's sequence is correct after several rounds", function () {
-        var simon = new Simon(null, generator);
+        var simon = new Simon(null, new Sequence(), generator);
 
         simon.start();
         simon.nextRound();
@@ -37,7 +37,7 @@ describe("Simon", function () {
     });
 
     it("verifies if player's sequence is correct after all rounds", function () {
-        var simon = new Simon(null, generator);
+        var simon = new Simon(null, new Sequence(), generator);
 
         simon.start();
         simon.nextRound();
@@ -48,14 +48,15 @@ describe("Simon", function () {
     });
 
     it("animates the board with the current sequence", function () {
-        var simon = new Simon(board, generator);
+        var sequence = new Sequence();
+        var simon = new Simon(board, sequence, generator);
         spyOn(board, "animateSequence");
         simon.start();
         simon.nextRound();
         simon.nextRound();
 
-        simon.animate([3, 2, 1]);
+        simon.animate();
 
-        expect(board.animateSequence).toHaveBeenCalledWith([3, 2, 1]);
+        expect(board.animateSequence).toHaveBeenCalledWith(sequence);
     })
 });

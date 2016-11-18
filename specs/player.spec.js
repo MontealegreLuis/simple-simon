@@ -17,7 +17,7 @@ describe("Player", function () {
             }
         };
         player = new Player(board);
-        simon = new Simon(board, generator);
+        simon = new Simon(board, new Sequence(), generator);
     });
 
     it("animates the current box", function () {
@@ -60,7 +60,7 @@ describe("Player", function () {
         expect(player.matches(wrongNumber, simon)).toBe(false);
     });
     it("resets its sequence", function () {
-        var simon = new Simon(null, null);
+        var simon = new Simon(null, new Sequence(), null);
 
         player.restart();
 

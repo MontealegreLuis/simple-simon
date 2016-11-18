@@ -7,21 +7,21 @@
     /**
      * Generates a sequence of random numbers that a player has to memorize.
      *
-     * @param {Board} board The game's board
+     * @param {Board} board This game's board
+     * @param {Sequence} sequence This game's sequence
      * @param {RandomGenerator} generator The random number generator
      * @constructor
      */
-    function Simon(board, generator) {
+    function Simon(board, sequence, generator) {
         /**
          * @type {Array} Contains the random sequence
          */
-        var sequence = [];
 
         /**
          * Populate the sequence with the first random value
          */
         this.start = function() {
-            sequence = [];
+            sequence.clear();
             this.nextRound();
         };
 
@@ -29,7 +29,7 @@
          * Adds a value to the sequence
          */
         this.nextRound = function () {
-            sequence.push(generator.generate());
+            sequence.append(generator.generate());
         };
 
         /**
@@ -46,7 +46,7 @@
          * @return {Boolean}
          */
         this.verify = function (playerSequence) {
-            return sequence.toString() == playerSequence.slice(0, sequence.length).toString();
+            return sequence.isCorrect(playerSequence);
         };
 
         /**
@@ -56,7 +56,7 @@
          * @returns {Boolean}
          */
         this.isComplete= function(playerSequence) {
-            return this.verify(playerSequence) && sequence.length === playerSequence.length;
+            return sequence.isComplete(playerSequence);
         };
     }
 
