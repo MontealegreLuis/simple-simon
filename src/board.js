@@ -6,13 +6,14 @@
 
     /**
      * @param {Boxes} boxes
+     * @param {SequenceAnimation} animation
      * @constructor
      */
-    function Board(boxes) {
+    function Board(boxes, animation) {
         this.gameOver = function() {
         };
-        this.animateSequence = function(sequence) {
-            boxes.animateSequence(sequence);
+        this.animateSequence = function() {
+            animation.animate();
         };
         this.animateBox = function(index) {
             boxes.animateBox(index);

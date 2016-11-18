@@ -5,16 +5,16 @@
 
 describe("Board", function () {
     it("animates a full sequence", function () {
-        var $boxes = {
-            animateSequence: function () {}
+        var $boxes = {};
+        var animation = {
+            animate: function () {}
         };
-        spyOn($boxes, "animateSequence");
-        var board = new Board($boxes);
-        var sequence = [3, 1, 0, 2];
+        spyOn(animation, "animate");
+        var board = new Board($boxes, animation);
 
-        board.animateSequence(sequence);
+        board.animateSequence();
 
-        expect($boxes.animateSequence).toHaveBeenCalledWith(sequence);
+        expect(animation.animate).toHaveBeenCalled();
     });
 
     it("animates a single box", function () {
@@ -22,7 +22,7 @@ describe("Board", function () {
             animateBox: function (sequence) {}
         };
         spyOn($boxes, "animateBox");
-        var board = new Board($boxes);
+        var board = new Board($boxes, null);
         var box = 3;
 
         board.animateBox(box);
