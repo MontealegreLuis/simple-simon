@@ -16,7 +16,7 @@
             animation.animate();
         };
         this.animateBox = function(index) {
-            boxes.animateBox(index);
+            boxes.animate(index);
         };
     }
 

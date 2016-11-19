@@ -4,17 +4,7 @@
 "use strict";
 
 describe("Boxes", function () {
-    var boxAnimation;
-    beforeEach(function() {
-        boxAnimation = jasmine.createSpy("boxAnimation");
-        jasmine.clock().install();
-    });
-
-    afterEach(function() {
-        jasmine.clock().uninstall();
-    });
-
-    it("animates a sequence with a single element", function () {
+    it("animates the first box", function () {
         var $boxes = {
             eq: function () {},
             animate: function(){ return this; }
@@ -22,23 +12,27 @@ describe("Boxes", function () {
         };
         spyOn($boxes, "eq").and.returnValue($boxes);
 
-        var boxes = new Boxes($boxes, boxAnimation);
+        var firstBox = 0;
+        var boxes = new Boxes($boxes);
 
-        boxes.animateBox(2);
+        boxes.animate(firstBox);
 
-        expect($boxes.eq).toHaveBeenCalledWith(2);
+        expect($boxes.eq).toHaveBeenCalledWith(firstBox);
     });
 
-    it("animates a sequence with several elements", function () {
-        var $boxes = {};
+    it("animates the last box", function () {
+        var $boxes = {
+            eq: function () {},
+            animate: function(){ return this; }
 
-        var boxes = new Boxes($boxes, boxAnimation);
-        boxes.animateSequence([4, 3, 0]);
+        };
+        spyOn($boxes, "eq").and.returnValue($boxes);
 
-        jasmine.clock().tick(1001);
-        jasmine.clock().tick(1000);
-        jasmine.clock().tick(1000);
+        var lastBox = 3;
+        var boxes = new Boxes($boxes);
 
-        expect(boxAnimation.calls.count()).toBe(3);
-    })
+        boxes.animate(lastBox);
+
+        expect($boxes.eq).toHaveBeenCalledWith(lastBox);
+    });
 });
