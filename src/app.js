@@ -3,7 +3,13 @@
  */
 (function ($) {
     var $boxes = $(".well");
-    var boxes = new Boxes($boxes);
+    var boxesAudio = [
+        new Audio ('audio/box01.mp3'),
+        new Audio ('audio/box02.mp3'),
+        new Audio ('audio/box03.mp3'),
+        new Audio ('audio/box04.mp3')
+    ];
+    var boxes = new Boxes($boxes, boxesAudio);
     var sequence = new Sequence();
     var board = new Board(
         boxes,
