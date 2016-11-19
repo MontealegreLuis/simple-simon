@@ -9,12 +9,17 @@ describe("Game", function () {
             start: function(){},
             animate: function() {}
         };
+        var player = {
+            restart: function () {}
+        };
         spyOn(simon, "start");
         spyOn(simon, "animate");
+        spyOn(player, "restart");
 
-        var game = new Game(null, simon, null);
+        var game = new Game(null, simon, player);
         game.start();
 
+        expect(player.restart).toHaveBeenCalled();
         expect(simon.start).toHaveBeenCalled();
         expect(simon.animate).toHaveBeenCalled();
     });

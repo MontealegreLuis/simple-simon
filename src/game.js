@@ -15,6 +15,7 @@
          * Generates the first random element in the sequence and animates the board
          */
         this.start = function() {
+            player.restart();
             simon.start();
             simon.animate();
         };
