@@ -36,14 +36,19 @@ describe("Board", function () {
             children: function () {},
             html: function () {}
         };
+        var audio = {
+            play: function () {}
+        };
         spyOn(panel, "removeClass").and.returnValue(panel);
         spyOn(panel, "addClass");
         spyOn(panel, "children").and.returnValue(panel);
         spyOn(panel, "html");
-        var board = new Board(null, null, panel);
+        spyOn(audio, "play");
+        var board = new Board(null, null, panel, audio);
 
         board.gameOver();
 
+        expect(audio.play).toHaveBeenCalled();
         expect(panel.removeClass).toHaveBeenCalled();
         expect(panel.addClass).toHaveBeenCalled();
         expect(panel.children).toHaveBeenCalled();

@@ -8,10 +8,12 @@
      * @param {Boxes} boxes
      * @param {SequenceAnimation} animation
      * @param {jQuery} panel
+     * @param {Audio} gameOverSound
      * @constructor
      */
-    function Board(boxes, animation, panel) {
+    function Board(boxes, animation, panel, gameOverSound) {
         this.gameOver = function() {
+            gameOverSound.play();
             panel
                 .removeClass("panel-default")
                 .addClass("panel-danger")

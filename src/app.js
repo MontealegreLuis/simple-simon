@@ -8,7 +8,8 @@
     var board = new Board(
         boxes,
         new SequenceAnimation(sequence, boxes),
-        $(".panel-default")
+        $(".panel-default"),
+        new Audio ('audio/doh.mp3')
     );
     var game = new Game(
         board,
