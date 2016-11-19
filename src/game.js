@@ -16,6 +16,7 @@
          */
         this.start = function() {
             player.restart();
+            board.reset();
             simon.start();
             simon.animate();
         };

@@ -49,4 +49,25 @@ describe("Board", function () {
         expect(panel.children).toHaveBeenCalled();
         expect(panel.html).toHaveBeenCalled();
     });
+
+    it("resets its styling when the game starts", function () {
+        var panel = {
+            removeClass: function () {},
+            addClass: function () {},
+            children: function () {},
+            html: function () {}
+        };
+        spyOn(panel, "removeClass").and.returnValue(panel);
+        spyOn(panel, "addClass");
+        spyOn(panel, "children").and.returnValue(panel);
+        spyOn(panel, "html");
+        var board = new Board(null, null, panel);
+
+        board.reset();
+
+        expect(panel.removeClass).toHaveBeenCalled();
+        expect(panel.addClass).toHaveBeenCalled();
+        expect(panel.children).toHaveBeenCalled();
+        expect(panel.html).toHaveBeenCalled();
+    });
 });

@@ -21,6 +21,16 @@
                 .html("<strong>Game over...</strong>")
             ;
         };
+        this.reset = function () {
+            panel
+                .removeClass("panel-danger")
+                .addClass("panel-default")
+            ;
+            panel
+                .children(".panel-heading")
+                .html("<strong>Simple Simon</strong>")
+            ;
+        }
         this.animateSequence = function() {
             animation.animate();
         };

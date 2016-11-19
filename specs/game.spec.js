@@ -12,13 +12,18 @@ describe("Game", function () {
         var player = {
             restart: function () {}
         };
+        var board = {
+            reset: function () {}
+        };
         spyOn(simon, "start");
         spyOn(simon, "animate");
         spyOn(player, "restart");
+        spyOn(board, "reset");
 
-        var game = new Game(null, simon, player);
+        var game = new Game(board, simon, player);
         game.start();
 
+        expect(board.reset).toHaveBeenCalled();
         expect(player.restart).toHaveBeenCalled();
         expect(simon.start).toHaveBeenCalled();
         expect(simon.animate).toHaveBeenCalled();
