@@ -7,10 +7,19 @@
     /**
      * @param {Boxes} boxes
      * @param {SequenceAnimation} animation
+     * @param {jQuery} panel
      * @constructor
      */
-    function Board(boxes, animation) {
+    function Board(boxes, animation, panel) {
         this.gameOver = function() {
+            panel
+                .removeClass("panel-default")
+                .addClass("panel-danger")
+            ;
+            panel
+                .children(".panel-heading")
+                .html("<strong>Game over...</strong>")
+            ;
         };
         this.animateSequence = function() {
             animation.animate();

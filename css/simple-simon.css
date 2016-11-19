@@ -1,3 +1,7 @@
+.container {
+    padding-top: 1.5em;
+}
+
 .well {
     height: 150px;
     opacity: .5;
@@ -17,4 +21,13 @@
 
 .well-danger {
     background-color: #C9302C;
+}
+
+.panel-heading {
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.panel-danger > .panel-body {
+    background-color: #F2DEDE;
 }

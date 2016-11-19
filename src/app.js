@@ -7,7 +7,8 @@
     var sequence = new Sequence();
     var board = new Board(
         boxes,
-        new SequenceAnimation(sequence, boxes)
+        new SequenceAnimation(sequence, boxes),
+        $(".panel-default")
     );
     var game = new Game(
         board,
