@@ -8,7 +8,7 @@ describe("Player", function () {
 
     beforeEach(function () {
         board = {
-            animateBox: function (box) {},
+            animateBox: function (box) {}
         };
         generator = {
             sequence: [3, 2, 1, 0],

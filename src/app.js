@@ -4,10 +4,10 @@
 (function ($) {
     var $boxes = $(".well");
     var boxesAudio = [
-        new Audio ('audio/box01.mp3'),
-        new Audio ('audio/box02.mp3'),
-        new Audio ('audio/box03.mp3'),
-        new Audio ('audio/box04.mp3')
+        new Audio('audio/box01.mp3'),
+        new Audio('audio/box02.mp3'),
+        new Audio('audio/box03.mp3'),
+        new Audio('audio/box04.mp3')
     ];
     var boxes = new Boxes($boxes, boxesAudio);
     var sequence = new Sequence();
@@ -15,7 +15,7 @@
         boxes,
         new SequenceAnimation(sequence, boxes),
         $(".panel-default"),
-        new Audio ('audio/doh.mp3')
+        new Audio('audio/doh.mp3')
     );
     var game = new Game(
         board,

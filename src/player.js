@@ -48,7 +48,7 @@
          */
         this.isWinner = function (simon) {
             return simon.isComplete(sequence);
-        }
+        };
 
         /**
          * The player sequence needs to be cleaned up every time it guesses the

@@ -32,7 +32,7 @@
                 .children(".panel-heading")
                 .html("<strong>Simple Simon</strong>")
             ;
-        }
+        };
         this.animateSequence = function() {
             animation.animate();
         };

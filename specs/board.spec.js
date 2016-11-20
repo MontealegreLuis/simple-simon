@@ -9,7 +9,7 @@ describe("Board", function () {
             animate: function () {}
         };
         spyOn(animation, "animate");
-        var board = new Board(null, animation, null);
+        var board = new Board(null, animation, null, null);
 
         board.animateSequence();
 
@@ -21,7 +21,7 @@ describe("Board", function () {
             animate: function (sequence) {}
         };
         spyOn(boxes, "animate");
-        var board = new Board(boxes, null, null);
+        var board = new Board(boxes, null, null, null);
         var box = 3;
 
         board.animateBox(box);
@@ -66,7 +66,7 @@ describe("Board", function () {
         spyOn(panel, "addClass");
         spyOn(panel, "children").and.returnValue(panel);
         spyOn(panel, "html");
-        var board = new Board(null, null, panel);
+        var board = new Board(null, null, panel, null);
 
         board.reset();
 
