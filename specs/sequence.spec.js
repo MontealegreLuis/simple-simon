@@ -74,5 +74,11 @@ describe("Sequence", function () {
         sequence.clear();
 
         expect(sequence.valid()).toBe(false);
-    })
+    });
+
+    it("determines its size", function () {
+        var sequence = new Sequence([2, 1, 0, 2, 3]);
+
+        expect(sequence.size()).toBe(5);
+    });
 });

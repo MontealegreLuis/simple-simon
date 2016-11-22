@@ -12,7 +12,7 @@
      * @constructor
      */
     function Board(boxes, animation, panel, gameOverSound) {
-        this.gameOver = function() {
+        this.gameOver = function () {
             gameOverSound.play();
             panel
                 .removeClass("panel-default")
@@ -33,10 +33,16 @@
                 .html("<strong>Simple Simon</strong>")
             ;
         };
-        this.animateSequence = function() {
+        this.updateScore = function (currentScore) {
+            panel
+                .children(".panel-heading")
+                .html("<strong>Score " + currentScore + "</strong>")
+            ;
+        };
+        this.animateSequence = function () {
             animation.animate();
         };
-        this.animateBox = function(index) {
+        this.animateBox = function (index) {
             boxes.animate(index);
         };
     }

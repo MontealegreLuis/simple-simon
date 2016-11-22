@@ -33,7 +33,9 @@
                 board.gameOver();
                 return;
             }
+
             if (player.isWinner(simon)) {
+                board.updateScore(simon.sequenceSize());
                 player.restart();
                 simon.nextRound();
                 simon.animate();

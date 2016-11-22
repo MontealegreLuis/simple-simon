@@ -52,16 +52,20 @@ describe("Game", function () {
         };
         var simon = {
             nextRound: function(){},
-            animate: function() {}
+            animate: function() {},
+            sequenceSize: function () {}
+        };
+        var board = {
+            updateScore: function () {}
         };
         spyOn(simon, "nextRound");
-        spyOn(simon, "animate");
+        spyOn(board, "updateScore");
 
-        var game = new Game(null, simon, player);
+        var game = new Game(board, simon, player);
         game.play(5);
 
+        expect(board.updateScore).not.toHaveBeenCalledWith();
         expect(simon.nextRound).not.toHaveBeenCalled();
-        expect(simon.animate).not.toHaveBeenCalled();
     });
 
     it("generates a new round if the player's sequence is correct and complete", function () {
@@ -72,15 +76,21 @@ describe("Game", function () {
         };
         var simon = {
             nextRound: function(){},
-            animate: function() {}
+            animate: function() {},
+            sequenceSize: function () { return 3; }
+        };
+        var board = {
+            updateScore: function () {}
         };
         spyOn(simon, "nextRound");
         spyOn(simon, "animate");
         spyOn(player, "restart");
+        spyOn(board, "updateScore");
 
-        var game = new Game(null, simon, player);
+        var game = new Game(board, simon, player);
         game.play(5);
 
+        expect(board.updateScore).toHaveBeenCalledWith(3);
         expect(simon.nextRound).toHaveBeenCalled();
         expect(simon.animate).toHaveBeenCalled();
         expect(player.restart).toHaveBeenCalled();

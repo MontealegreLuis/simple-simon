@@ -14,10 +14,6 @@
      */
     function Simon(board, sequence, generator) {
         /**
-         * @type {Array} Contains the random sequence
-         */
-
-        /**
          * Populate the sequence with the first random value
          */
         this.start = function() {
@@ -37,6 +33,13 @@
          */
         this.animate = function () {
             board.animateSequence(sequence);
+        };
+
+        /**
+         * @returns {Number}
+         */
+        this.sequenceSize = function () {
+            return sequence.size();
         };
 
         /**

@@ -58,5 +58,11 @@ describe("Simon", function () {
         simon.animate();
 
         expect(board.animateSequence).toHaveBeenCalledWith(sequence);
-    })
+    });
+
+    it("knows the size of the current sequence", function () {
+        var simon = new Simon(null, new Sequence([2, 1, 3, 0, 2, 3]), null);
+
+        expect(simon.sequenceSize()).toBe(6);
+    });
 });

@@ -60,6 +60,13 @@
             sequence = [];
             index = 0;
         };
+
+        /**
+         * @returns {Number}
+         */
+        this.size = function () {
+            return sequence.length;
+        }
     }
 
     window.Sequence = Sequence;

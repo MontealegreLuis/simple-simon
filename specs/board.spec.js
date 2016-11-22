@@ -75,4 +75,19 @@ describe("Board", function () {
         expect(panel.children).toHaveBeenCalled();
         expect(panel.html).toHaveBeenCalled();
     });
+
+    it("updates the player score", function () {
+        var panel = {
+            children: function () {},
+            html: function () {}
+        };
+        spyOn(panel, "children").and.returnValue(panel);
+        spyOn(panel, "html");
+        var board = new Board(null, null, panel, null);
+
+        board.updateScore(2);
+
+        expect(panel.children).toHaveBeenCalled();
+        expect(panel.html).toHaveBeenCalled();
+    });
 });
