@@ -19,7 +19,7 @@
                 .addClass("panel-danger")
             ;
             panel
-                .children(".panel-heading")
+                .children("[data-board-title]")
                 .html("<strong>Game over...</strong>")
             ;
         };
@@ -29,7 +29,7 @@
                 .addClass("panel-default")
             ;
             panel
-                .children(".panel-heading")
+                .children("[data-board-title]")
                 .html("<strong>Simple Simon</strong>")
             ;
         };

@@ -14,31 +14,35 @@
 <body>
 <main class="container">
     <article class="col-sm-8 col-sm-offset-2">
-        <div class="panel panel-default">
-            <div class="panel-heading">
+        <div class="panel panel-default" data-board>
+            <div class="panel-heading" data-board-title>
                 <strong>Simple Simon</strong>
             </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-6">
-                        <div class="well well-success" data-value="0"></div>
+                        <div class="well well-success" data-value="0" data-box>
+                        </div>
                     </div>
                     <div class="col-sm-6">
-                        <div class="well well-info" data-value="1"></div>
+                        <div class="well well-info" data-value="1" data-box>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6">
-                        <div class="well well-danger" data-value="2"></div>
+                        <div class="well well-danger" data-value="2" data-box>
+                        </div>
                     </div>
                     <div class="col-sm-6">
-                        <div class="well well-warning" data-value="3"></div>
+                        <div class="well well-warning" data-value="3" data-box>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="footer">
                 <button
-                    id="start-game"
+                    data-start-game
                     class="btn btn-primary btn-block"
                     type="button"
                 >
