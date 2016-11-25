@@ -14,8 +14,8 @@ describe("Game", function () {
 
     beforeEach(function () {
         player = {
-            matches: function () { return true; },
-            isWinner: function () { return true; },
+            winsTurn: function () { return true; },
+            winsRound: function () { return true; },
             restart: function () {}
         };
         simon = {
@@ -48,7 +48,7 @@ describe("Game", function () {
 
     it("finishes the game if the player's choice is incorrect", function(){
         var wrongBox = 5;
-        player.matches = function () { return false; };
+        player.winsTurn = function () { return false; };
         spyOn(board, "gameOver");
 
         game.play(wrongBox);
@@ -58,7 +58,7 @@ describe("Game", function () {
 
     it("continues if the player's sequence is correct but incomplete", function () {
         var correctBox = 5;
-        player.isWinner = function () { return false; };
+        player.winsRound = function () { return false; };
         spyOn(simon, "nextRound");
         spyOn(board, "updateScore");
 

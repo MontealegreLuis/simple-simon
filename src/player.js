@@ -35,7 +35,7 @@
          * @param {Simon} simon
          * @returns boolean
          */
-        this.matches = function (box, simon) {
+        this.winsTurn = function (box, simon) {
             play(box);
             return simon.verify(sequence);
         };
@@ -46,7 +46,7 @@
          * @param {Simon} simon
          * @returns {Boolean}
          */
-        this.isWinner = function (simon) {
+        this.winsRound = function (simon) {
             return simon.isComplete(sequence);
         };
 

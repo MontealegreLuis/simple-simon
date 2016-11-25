@@ -29,12 +29,12 @@
          * @param {Number} box
          */
         this.play = function (box) {
-            if (!player.matches(box, simon)) {
+            if (!player.winsTurn(box, simon)) {
                 board.gameOver();
                 return;
             }
 
-            if (player.isWinner(simon)) {
+            if (player.winsRound(simon)) {
                 board.updateScore(simon.sequenceSize());
                 simon.nextRound();
                 board.animateSequence();

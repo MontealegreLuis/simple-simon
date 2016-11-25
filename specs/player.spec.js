@@ -31,7 +31,7 @@ describe("Player", function () {
 
         simon.start();
 
-        expect(player.matches(simonNumber, simon)).toBe(true);
+        expect(player.winsTurn(simonNumber, simon)).toBe(true);
         expect(board.highlightBox).toHaveBeenCalledWith(simonNumber);
     });
 
@@ -40,22 +40,22 @@ describe("Player", function () {
 
         simon.start();
 
-        expect(player.matches(simonNumber, simon)).toBe(true);
+        expect(player.winsTurn(simonNumber, simon)).toBe(true);
     });
 
     it("verifies a full sequence with several elements", function () {
         var simonNumbers = [3, 2, 1, 0];
 
         simon.start();
-        player.matches(simonNumbers[0], simon);
+        player.winsTurn(simonNumbers[0], simon);
         simon.nextRound();
-        player.matches(simonNumbers[1], simon);
+        player.winsTurn(simonNumbers[1], simon);
         simon.nextRound();
-        player.matches(simonNumbers[2], simon);
+        player.winsTurn(simonNumbers[2], simon);
         simon.nextRound();
-        player.matches(simonNumbers[3], simon);
+        player.winsTurn(simonNumbers[3], simon);
 
-        expect(player.isWinner(simon)).toBe(true);
+        expect(player.winsRound(simon)).toBe(true);
     });
 
     it("updates the board if player does not win", function () {
@@ -64,13 +64,13 @@ describe("Player", function () {
             verify: function () { return false; }
         };
 
-        expect(player.matches(wrongNumber, simon)).toBe(false);
+        expect(player.winsTurn(wrongNumber, simon)).toBe(false);
     });
 
     it("resets its sequence", function () {
         player.restart();
 
         // Comparing 2 empty sequences should be true
-        expect(player.isWinner(simon)).toBe(true);
+        expect(player.winsRound(simon)).toBe(true);
     })
 });
