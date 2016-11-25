@@ -57,4 +57,10 @@ describe("SequenceAnimation", function () {
         expect(boxes.animate).toHaveBeenCalledWith(3);
         expect(boxes.animate).toHaveBeenCalledWith(0);
     });
+
+    it("animates a specific box", function () {
+        animation.animateBox(4);
+
+        expect(boxes.animate).toHaveBeenCalledWith(4);
+    });
 });

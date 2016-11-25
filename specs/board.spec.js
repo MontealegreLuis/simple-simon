@@ -4,12 +4,37 @@
 "use strict";
 
 describe("Board", function () {
-    it("animates a full sequence", function () {
-        var animation = {
-            animate: function () {}
+    /** @var {Object} Fake spy for the board animations */
+    var animation;
+
+    /** @var {Board} */
+    var board;
+
+    /** @var {Object} Fake spy for the board's panel */
+    var panel;
+
+    /** @var {Object} Fake spy for the animation's audio */
+    var audio;
+
+    beforeEach(function () {
+        animation = {
+            animate: function () {},
+            animateBox: function () {}
         };
+        panel = {
+            removeClass: function () {},
+            addClass: function () {},
+            children: function () {},
+            html: function () {}
+        };
+        audio = {
+            play: function () {}
+        };
+        board = new Board(animation, panel, audio);
+    });
+
+    it("animates a full sequence", function () {
         spyOn(animation, "animate");
-        var board = new Board(null, animation, null, null);
 
         board.animateSequence();
 
@@ -17,34 +42,20 @@ describe("Board", function () {
     });
 
     it("animates a single box", function () {
-        var boxes = {
-            animate: function (sequence) {}
-        };
-        spyOn(boxes, "animate");
-        var board = new Board(boxes, null, null, null);
         var box = 3;
+        spyOn(animation, "animateBox");
 
         board.animateBox(box);
 
-        expect(boxes.animate).toHaveBeenCalledWith(box);
+        expect(animation.animateBox).toHaveBeenCalledWith(box);
     });
 
     it("gets highlighted when the game is over", function () {
-        var panel = {
-            removeClass: function () {},
-            addClass: function () {},
-            children: function () {},
-            html: function () {}
-        };
-        var audio = {
-            play: function () {}
-        };
         spyOn(panel, "removeClass").and.returnValue(panel);
         spyOn(panel, "addClass");
         spyOn(panel, "children").and.returnValue(panel);
         spyOn(panel, "html");
         spyOn(audio, "play");
-        var board = new Board(null, null, panel, audio);
 
         board.gameOver();
 
@@ -56,17 +67,10 @@ describe("Board", function () {
     });
 
     it("resets its styling when the game starts", function () {
-        var panel = {
-            removeClass: function () {},
-            addClass: function () {},
-            children: function () {},
-            html: function () {}
-        };
         spyOn(panel, "removeClass").and.returnValue(panel);
         spyOn(panel, "addClass");
         spyOn(panel, "children").and.returnValue(panel);
         spyOn(panel, "html");
-        var board = new Board(null, null, panel, null);
 
         board.reset();
 
@@ -77,13 +81,8 @@ describe("Board", function () {
     });
 
     it("updates the player score", function () {
-        var panel = {
-            children: function () {},
-            html: function () {}
-        };
         spyOn(panel, "children").and.returnValue(panel);
         spyOn(panel, "html");
-        var board = new Board(null, null, panel, null);
 
         board.updateScore(2);
 

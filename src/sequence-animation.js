@@ -24,6 +24,10 @@
             sequence.rewind();
             animateBox.intervalId = setInterval(animateBox, defaultDuration);
         };
+
+        this.animateBox = function (index) {
+            boxes.animate(index);
+        }
     }
 
     window.SequenceAnimation = SequenceAnimation;

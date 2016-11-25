@@ -9,11 +9,9 @@
         new Audio('audio/box03.mp3'),
         new Audio('audio/box04.mp3')
     ];
-    var boxes = new Boxes($boxes, boxesAudio);
     var sequence = new Sequence(new RandomGenerator(0, $boxes.length - 1));
     var board = new Board(
-        boxes,
-        new SequenceAnimation(sequence, boxes),
+        new SequenceAnimation(sequence, new Boxes($boxes, boxesAudio)),
         $("[data-board]"),
         new Audio('audio/doh.mp3')
     );
