@@ -55,12 +55,12 @@ describe("Simon", function () {
         expect(simon.isComplete(playerSequence)).toBe(true);
     });
 
-    it("knows the size of the current sequence", function () {
+    it("knows the current round number", function () {
         sequence.append();
         sequence.append();
         sequence.append();
         sequence.append();
 
-        expect(simon.sequenceSize()).toBe(4);
+        expect(simon.roundNumber()).toBe(4);
     });
 });

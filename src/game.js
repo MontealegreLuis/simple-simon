@@ -35,7 +35,7 @@
             }
 
             if (player.winsRound(simon)) {
-                board.updateScore(simon.sequenceSize());
+                board.updateScore(simon.roundNumber());
                 simon.nextRound();
                 board.animateSequence();
                 player.restart();

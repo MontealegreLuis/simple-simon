@@ -29,7 +29,7 @@
         /**
          * @returns {Number}
          */
-        this.sequenceSize = function () {
+        this.roundNumber = function () {
             return sequence.size();
         };
 

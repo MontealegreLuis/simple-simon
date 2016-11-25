@@ -21,7 +21,7 @@ describe("Game", function () {
         simon = {
             start: function(){},
             nextRound: function(){},
-            sequenceSize: function () { return sequenceSize; }
+            roundNumber: function () { return sequenceSize; }
         };
         board = {
             updateScore: function () {},
