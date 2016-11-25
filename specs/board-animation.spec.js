@@ -59,7 +59,7 @@ describe("BoardAnimation", function () {
     });
 
     it("animates a specific box", function () {
-        animation.animateBox(4);
+        animation.animateBoxNumbered(4);
 
         expect(boxes.animate).toHaveBeenCalledWith(4);
     });

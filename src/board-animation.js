@@ -25,8 +25,11 @@
             animateBox.intervalId = setInterval(animateBox, defaultDuration);
         };
 
-        this.animateBox = function (index) {
-            boxes.animate(index);
+        /**
+         * @param {Number} sequenceNumber
+         */
+        this.animateBoxNumbered = function (sequenceNumber) {
+            boxes.animate(sequenceNumber);
         }
     }
 

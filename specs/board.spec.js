@@ -19,7 +19,7 @@ describe("Board", function () {
     beforeEach(function () {
         animation = {
             animate: function () {},
-            animateBox: function () {}
+            animateBoxNumbered: function () {}
         };
         panel = {
             removeClass: function () {},
@@ -43,11 +43,11 @@ describe("Board", function () {
 
     it("animates a single box", function () {
         var box = 3;
-        spyOn(animation, "animateBox");
+        spyOn(animation, "animateBoxNumbered");
 
         board.highlightBox(box);
 
-        expect(animation.animateBox).toHaveBeenCalledWith(box);
+        expect(animation.animateBoxNumbered).toHaveBeenCalledWith(box);
     });
 
     it("gets highlighted when the game is over", function () {

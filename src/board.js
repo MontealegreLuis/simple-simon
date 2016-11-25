@@ -52,7 +52,7 @@
          * @param {Number} index
          */
         this.highlightBox = function (index) {
-            animation.animateBox(index);
+            animation.animateBoxNumbered(index);
         };
     }
 
