@@ -22,7 +22,7 @@ describe("Simon", function () {
         };
         generator = new ArrayGenerator();
         sequence = new Sequence(generator);
-        simon = new Simon(board, sequence);
+        simon = new Simon(sequence);
     });
 
     it("verifies if player's sequence is correct after first round", function () {
@@ -53,17 +53,6 @@ describe("Simon", function () {
         simon.nextRound();
 
         expect(simon.isComplete(playerSequence)).toBe(true);
-    });
-
-    it("animates the board with the current sequence", function () {
-        spyOn(board, "animateSequence");
-        simon.start();
-        simon.nextRound();
-        simon.nextRound();
-
-        simon.animate();
-
-        expect(board.animateSequence).toHaveBeenCalled();
     });
 
     it("knows the size of the current sequence", function () {

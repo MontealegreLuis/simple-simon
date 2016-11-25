@@ -22,7 +22,7 @@ describe("Player", function () {
         };
         generator = new ArrayGenerator([3, 2, 1, 0]);
         player = new Player(board);
-        simon = new Simon(board, new Sequence(generator));
+        simon = new Simon(new Sequence(generator));
     });
 
     it("animates the current box", function () {
@@ -68,8 +68,6 @@ describe("Player", function () {
     });
 
     it("resets its sequence", function () {
-        var simon = new Simon(null, new Sequence(null));
-
         player.restart();
 
         // Comparing 2 empty sequences should be true

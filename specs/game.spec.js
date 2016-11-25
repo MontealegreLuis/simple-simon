@@ -4,95 +4,82 @@
 "use strict";
 
 describe("Game", function () {
-    it("starts the game", function () {
-        var simon = {
-            start: function(){},
-            animate: function() {}
-        };
-        var player = {
+    // Spies
+    var player, simon, board;
+
+    var sequenceSize = 3;
+
+    /** @var {Game} */
+    var game;
+
+    beforeEach(function () {
+        player = {
+            matches: function () { return true; },
+            isWinner: function () { return true; },
             restart: function () {}
         };
-        var board = {
-            reset: function () {}
+        simon = {
+            start: function(){},
+            nextRound: function(){},
+            sequenceSize: function () { return sequenceSize; }
         };
+        board = {
+            updateScore: function () {},
+            animateSequence: function() {},
+            reset: function () {},
+            gameOver: function () {}
+        };
+        game = new Game(board, simon, player);
+    });
+
+    it("starts the game", function () {
         spyOn(simon, "start");
-        spyOn(simon, "animate");
+        spyOn(board, "animateSequence");
         spyOn(player, "restart");
         spyOn(board, "reset");
 
-        var game = new Game(board, simon, player);
         game.start();
 
         expect(board.reset).toHaveBeenCalled();
         expect(player.restart).toHaveBeenCalled();
         expect(simon.start).toHaveBeenCalled();
-        expect(simon.animate).toHaveBeenCalled();
+        expect(board.animateSequence).toHaveBeenCalled();
     });
 
     it("finishes the game if the player's choice is incorrect", function(){
         var wrongBox = 5;
-        var player = {
-            matches: function () { return false; }
-        };
-        var board = {
-            gameOver: function () {}
-        };
+        player.matches = function () { return false; };
         spyOn(board, "gameOver");
 
-        var game = new Game(board, null, player);
         game.play(wrongBox);
 
         expect(board.gameOver).toHaveBeenCalled();
     });
 
     it("continues if the player's sequence is correct but incomplete", function () {
-        var player = {
-            matches: function () { return true; },
-            isWinner: function () { return false; }
-        };
-        var simon = {
-            nextRound: function(){},
-            animate: function() {},
-            sequenceSize: function () {}
-        };
-        var board = {
-            updateScore: function () {}
-        };
+        var correctBox = 5;
+        player.isWinner = function () { return false; };
         spyOn(simon, "nextRound");
         spyOn(board, "updateScore");
 
-        var game = new Game(board, simon, player);
-        game.play(5);
+        game.play(correctBox);
 
         expect(board.updateScore).not.toHaveBeenCalledWith();
         expect(simon.nextRound).not.toHaveBeenCalled();
     });
 
     it("generates a new round if the player's sequence is correct and complete", function () {
-        var player = {
-            matches: function () { return true; },
-            isWinner: function () { return true; },
-            restart: function () {}
-        };
-        var simon = {
-            nextRound: function(){},
-            animate: function() {},
-            sequenceSize: function () { return 3; }
-        };
-        var board = {
-            updateScore: function () {}
-        };
+        var correctBox = 5;
         spyOn(simon, "nextRound");
-        spyOn(simon, "animate");
+        spyOn(board, "animateSequence");
         spyOn(player, "restart");
         spyOn(board, "updateScore");
 
-        var game = new Game(board, simon, player);
-        game.play(5);
+        game.play(correctBox);
 
-        expect(board.updateScore).toHaveBeenCalledWith(3);
+        expect(board.updateScore).toHaveBeenCalledWith(sequenceSize);
         expect(simon.nextRound).toHaveBeenCalled();
-        expect(simon.animate).toHaveBeenCalled();
+        expect(board.animateSequence).toHaveBeenCalled();
         expect(player.restart).toHaveBeenCalled();
     });
 });

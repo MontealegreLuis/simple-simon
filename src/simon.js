@@ -7,11 +7,10 @@
     /**
      * Generates a sequence of random numbers that a player has to memorize.
      *
-     * @param {Board} board This game's board
      * @param {Sequence} sequence This game's sequence
      * @constructor
      */
-    function Simon(board, sequence) {
+    function Simon(sequence) {
         /**
          * Populate the sequence with the first random value
          */
@@ -25,13 +24,6 @@
          */
         this.nextRound = function () {
             sequence.append();
-        };
-
-        /**
-         * Animate the corresponding boxes in the board
-         */
-        this.animate = function () {
-            board.animateSequence();
         };
 
         /**
