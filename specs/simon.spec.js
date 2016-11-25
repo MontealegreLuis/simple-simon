@@ -18,7 +18,7 @@ describe("Simon", function () {
 
     beforeEach(function () {
         board = {
-            animateSequence: function (sequence) {}
+            animateSequence: function () {}
         };
         generator = new ArrayGenerator();
         sequence = new Sequence(generator);
@@ -63,7 +63,7 @@ describe("Simon", function () {
 
         simon.animate();
 
-        expect(board.animateSequence).toHaveBeenCalledWith(sequence);
+        expect(board.animateSequence).toHaveBeenCalled();
     });
 
     it("knows the size of the current sequence", function () {

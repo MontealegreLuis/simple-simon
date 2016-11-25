@@ -28,10 +28,10 @@
         };
 
         /**
-         * Use the sequence to animate the corresponding boxes in the board
+         * Animate the corresponding boxes in the board
          */
         this.animate = function () {
-            board.animateSequence(sequence);
+            board.animateSequence();
         };
 
         /**
