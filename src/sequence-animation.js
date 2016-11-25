@@ -9,7 +9,7 @@
      * @param {Boxes} boxes
      * @constructor
      */
-    function SequenceAnimation(sequence, boxes) {
+    function BoardAnimation(sequence, boxes) {
         var defaultDuration = 1000;
 
         var animateBox = function () {
@@ -30,5 +30,5 @@
         }
     }
 
-    window.SequenceAnimation = SequenceAnimation;
+    window.BoardAnimation = BoardAnimation;
 })(window);

@@ -3,7 +3,7 @@
  */
 "use strict";
 
-describe("SequenceAnimation", function () {
+describe("BoardAnimation", function () {
     /** @var {Object} Fake spy for the board boxes */
     var boxes;
 
@@ -13,7 +13,7 @@ describe("SequenceAnimation", function () {
     /** @var {Sequence} */
     var sequence;
 
-    /** @var {SequenceAnimation} */
+    /** @var {BoardAnimation} */
     var animation;
 
     beforeEach(function() {
@@ -24,7 +24,7 @@ describe("SequenceAnimation", function () {
         spyOn(boxes, "animate");
         generator = new ArrayGenerator();
         sequence = new Sequence(generator);
-        animation = new SequenceAnimation(sequence, boxes);
+        animation = new BoardAnimation(sequence, boxes);
     });
 
     afterEach(function() {

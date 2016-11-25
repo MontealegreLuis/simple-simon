@@ -5,7 +5,7 @@
     "use strict";
 
     /**
-     * @param {SequenceAnimation} animation
+     * @param {BoardAnimation} animation
      * @param {jQuery} panel
      * @param {Audio} gameOverSound
      * @constructor
