@@ -29,6 +29,9 @@
          * @param {Number} box
          */
         this.play = function (box) {
+            player.play(box);
+            board.highlightBox(box);
+
             if (!player.winsTurn(box, simon)) {
                 board.gameOver();
                 return;

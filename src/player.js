@@ -8,24 +8,21 @@
      * A player is able to add boxes to her sequence and verify if the choice was
      * correct
      *
-     * @param {Board} board
      * @constructor
      */
-    function Player(board) {
+    function Player() {
         /**
          * @type {Array} Contains the player's sequence
          */
-        var sequence;
+        var sequence = [];
 
         /**
          * Animate the box and add it to the player's sequence
          *
          * @param {Number} box
          */
-        var play = function (box) {
-            sequence = sequence || [];
+        this.play = function (box) {
             sequence.push(box);
-            board.highlightBox(box);
         };
 
         /**
@@ -36,7 +33,6 @@
          * @returns boolean
          */
         this.winsTurn = function (box, simon) {
-            play(box);
             return simon.verify(sequence);
         };
 

@@ -16,7 +16,8 @@ describe("Game", function () {
         player = {
             winsTurn: function () { return true; },
             winsRound: function () { return true; },
-            restart: function () {}
+            restart: function () {},
+            play: function () {}
         };
         simon = {
             start: function(){},
@@ -27,7 +28,8 @@ describe("Game", function () {
             updateScore: function () {},
             animateSequence: function() {},
             reset: function () {},
-            gameOver: function () {}
+            gameOver: function () {},
+            highlightBox: function () {}
         };
         game = new Game(board, simon, player);
     });
