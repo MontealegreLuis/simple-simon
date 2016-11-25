@@ -10,7 +10,7 @@
         new Audio('audio/box04.mp3')
     ];
     var boxes = new Boxes($boxes, boxesAudio);
-    var sequence = new Sequence();
+    var sequence = new Sequence(new RandomGenerator(0, $boxes.length - 1));
     var board = new Board(
         boxes,
         new SequenceAnimation(sequence, boxes),
@@ -19,7 +19,7 @@
     );
     var game = new Game(
         board,
-        new Simon(board, sequence, new RandomGenerator(0, $boxes.length - 1)),
+        new Simon(board, sequence),
         new Player(board)
     );
     $("[data-start-game]").on("click", game.start);

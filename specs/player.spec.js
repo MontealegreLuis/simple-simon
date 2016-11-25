@@ -17,7 +17,7 @@ describe("Player", function () {
             }
         };
         player = new Player(board);
-        simon = new Simon(board, new Sequence(), generator);
+        simon = new Simon(board, new Sequence(generator));
     });
 
     it("animates the current box", function () {

@@ -4,7 +4,9 @@
 "use strict";
 
 describe("Simon", function () {
-    var generator, board;
+    var generator;
+    var board;
+    var sequence;
 
     beforeEach(function () {
         board = {
@@ -16,10 +18,11 @@ describe("Simon", function () {
                 return this.sequence.shift();
             }
         };
+        sequence = new Sequence(generator);
     });
 
     it("verifies if player's sequence is correct after first round", function () {
-        var simon = new Simon(null, new Sequence(), generator);
+        var simon = new Simon(null, sequence);
 
         simon.start();
 
@@ -27,7 +30,7 @@ describe("Simon", function () {
     });
 
     it("verifies if player's sequence is correct after several rounds", function () {
-        var simon = new Simon(null, new Sequence(), generator);
+        var simon = new Simon(null, sequence);
 
         simon.start();
         simon.nextRound();
@@ -37,7 +40,7 @@ describe("Simon", function () {
     });
 
     it("verifies if player's sequence is correct after all rounds", function () {
-        var simon = new Simon(null, new Sequence(), generator);
+        var simon = new Simon(null, sequence);
 
         simon.start();
         simon.nextRound();
@@ -48,7 +51,6 @@ describe("Simon", function () {
     });
 
     it("animates the board with the current sequence", function () {
-        var sequence = new Sequence();
         var simon = new Simon(board, sequence, generator);
         spyOn(board, "animateSequence");
         simon.start();
@@ -61,8 +63,12 @@ describe("Simon", function () {
     });
 
     it("knows the size of the current sequence", function () {
-        var simon = new Simon(null, new Sequence([2, 1, 3, 0, 2, 3]), null);
+        var simon = new Simon(null, sequence);
+        sequence.append();
+        sequence.append();
+        sequence.append();
+        sequence.append();
 
-        expect(simon.sequenceSize()).toBe(6);
+        expect(simon.sequenceSize()).toBe(4);
     });
 });

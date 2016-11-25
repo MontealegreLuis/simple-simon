@@ -4,8 +4,25 @@
 "use strict";
 
 describe("SequenceAnimation", function () {
+    var boxes;
+    var generator;
+    var sequence;
+    var animation;
+
     beforeEach(function() {
         jasmine.clock().install();
+        boxes = {
+            animate: function () {}
+        };
+        spyOn(boxes, "animate");
+        generator = {
+            sequence: null,
+            generate: function() {
+                return this.sequence.shift();
+            }
+        };
+        sequence = new Sequence(generator);
+        animation = new SequenceAnimation(sequence, boxes);
     });
 
     afterEach(function() {
@@ -13,30 +30,23 @@ describe("SequenceAnimation", function () {
     });
 
     it("animates a single element", function () {
-        var boxes = {
-            animate: function () {}
-        };
-        var element = [4];
-        var animation = new SequenceAnimation(new Sequence(element), boxes);
-        spyOn(boxes, "animate");
+        var element = 4;
+        generator.sequence = [element];
+        sequence.append();
 
         animation.animate();
-
         jasmine.clock().tick(1001);
 
-        expect(boxes.animate).toHaveBeenCalledWith(4);
+        expect(boxes.animate).toHaveBeenCalledWith(element);
     });
 
     it("animates a sequence with several elements", function () {
-        var boxes = {
-            animate: function () {}
-        };
-        var elements = [4, 3, 0];
-        var animation = new SequenceAnimation(new Sequence(elements), boxes);
-        spyOn(boxes, "animate");
+        generator.sequence = [4, 3, 0];
+        sequence.append();
+        sequence.append();
+        sequence.append();
 
         animation.animate();
-
         jasmine.clock().tick(1001);
         jasmine.clock().tick(1000);
         jasmine.clock().tick(1000);

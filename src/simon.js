@@ -9,10 +9,9 @@
      *
      * @param {Board} board This game's board
      * @param {Sequence} sequence This game's sequence
-     * @param {RandomGenerator} generator The random number generator
      * @constructor
      */
-    function Simon(board, sequence, generator) {
+    function Simon(board, sequence) {
         /**
          * Populate the sequence with the first random value
          */
@@ -25,7 +24,7 @@
          * Adds a value to the sequence
          */
         this.nextRound = function () {
-            sequence.append(generator.generate());
+            sequence.append();
         };
 
         /**

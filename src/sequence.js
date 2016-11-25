@@ -4,11 +4,11 @@
 (function (window) {
 
     /**
-     * @param {Array} elements Optional set of elements for this sequence
+     * @param {RandomGenerator} generator
      * @constructor
      */
-    function Sequence(elements) {
-        var sequence = elements || [];
+    function Sequence(generator) {
+        var sequence = [];
         var index = 0;
 
         /**
@@ -34,10 +34,10 @@
         };
 
         /**
-         * @param {Number} number
+         * Append an element to this sequence
          */
-        this.append = function (number) {
-            sequence.push(number);
+        this.append = function () {
+            sequence.push(generator.generate());
         };
 
         /**
