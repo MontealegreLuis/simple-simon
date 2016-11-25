@@ -4,54 +4,58 @@
 "use strict";
 
 describe("Simon", function () {
+    /** @var {ArrayGenerator} Fake sequence generator */
     var generator;
+
+    /** @var {Object} Fake spy for the Board */
     var board;
+
+    /** @var {Sequence} */
     var sequence;
+
+    /** @var {Simon} */
+    var simon;
 
     beforeEach(function () {
         board = {
             animateSequence: function (sequence) {}
         };
-        generator = {
-            sequence: [3, 2, 1, 0],
-            generate: function() {
-                return this.sequence.shift();
-            }
-        };
+        generator = new ArrayGenerator();
         sequence = new Sequence(generator);
+        simon = new Simon(board, sequence);
     });
 
     it("verifies if player's sequence is correct after first round", function () {
-        var simon = new Simon(null, sequence);
+        var singleElementSequence = [3];
+        generator.changeSequence(singleElementSequence);
 
         simon.start();
 
-        expect(simon.verify([3])).toBe(true);
+        expect(simon.verify(singleElementSequence)).toBe(true);
     });
 
     it("verifies if player's sequence is correct after several rounds", function () {
-        var simon = new Simon(null, sequence);
-
+        var playerSequence = [3, 2, 1];
+        generator.changeSequence(playerSequence);
         simon.start();
         simon.nextRound();
         simon.nextRound();
 
-        expect(simon.verify([3, 2, 1])).toBe(true);
+        expect(simon.verify(playerSequence)).toBe(true);
     });
 
     it("verifies if player's sequence is correct after all rounds", function () {
-        var simon = new Simon(null, sequence);
-
+        var playerSequence = [3, 2, 1, 0];
+        generator.changeSequence(playerSequence);
         simon.start();
         simon.nextRound();
         simon.nextRound();
         simon.nextRound();
 
-        expect(simon.isComplete([3, 2, 1, 0])).toBe(true);
+        expect(simon.isComplete(playerSequence)).toBe(true);
     });
 
     it("animates the board with the current sequence", function () {
-        var simon = new Simon(board, sequence, generator);
         spyOn(board, "animateSequence");
         simon.start();
         simon.nextRound();
@@ -63,7 +67,6 @@ describe("Simon", function () {
     });
 
     it("knows the size of the current sequence", function () {
-        var simon = new Simon(null, sequence);
         sequence.append();
         sequence.append();
         sequence.append();

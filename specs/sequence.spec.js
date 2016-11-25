@@ -4,22 +4,20 @@
 "use strict";
 
 describe("Sequence", function () {
+    /** @var {ArrayGenerator} Fake sequence generator */
     var generator;
+
+    /** @var {Sequence} */
     var sequence;
 
     beforeEach(function () {
-        generator = {
-            sequence: null,
-            generate: function () {
-                return this.sequence.shift();
-            }
-        };
+        generator = new ArrayGenerator();
         sequence = new Sequence(generator);
     });
 
     it("gets the current element", function () {
         var onlyElement = 3;
-        generator.sequence = [onlyElement];
+        generator.changeSequence([onlyElement]);
         sequence.append();
 
         expect(sequence.current()).toBe(onlyElement);
@@ -27,7 +25,7 @@ describe("Sequence", function () {
 
     it("gets the next element", function () {
         var secondElement = 3;
-        generator.sequence = [1, secondElement];
+        generator.changeSequence([1, secondElement]);
         sequence.append();
         sequence.append();
 
@@ -37,7 +35,7 @@ describe("Sequence", function () {
     });
 
     it("knows when there are no more elements", function () {
-        generator.sequence = [1, 2];
+        generator.changeSequence([1, 2]);
         sequence.append();
         sequence.append();
 
@@ -50,7 +48,7 @@ describe("Sequence", function () {
 
     it("starts iterating again", function () {
         var firstElement = 1;
-        generator.sequence = [firstElement, 2];
+        generator.changeSequence([firstElement, 2]);
         sequence.append();
         sequence.append();
 
@@ -64,7 +62,7 @@ describe("Sequence", function () {
     it("appends more elements to the sequence", function () {
         var firstNumber = 3;
         var secondNumber = 2;
-        generator.sequence = [firstNumber, secondNumber];
+        generator.changeSequence([firstNumber, secondNumber]);
 
         sequence.append();
         sequence.append();
@@ -77,7 +75,7 @@ describe("Sequence", function () {
     it("knows if a partial sequence is correct", function () {
         var fullSequence = [3, 0, 1];
         var partialSequence = [3, 0];
-        generator.sequence = fullSequence;
+        generator.changeSequence(fullSequence);
         sequence.append();
         sequence.append();
         sequence.append();
@@ -87,7 +85,7 @@ describe("Sequence", function () {
 
     it("knows if a full sequence is correct", function () {
         var fullSequence = [3, 0, 1];
-        generator.sequence = [3, 0, 1];
+        generator.changeSequence(fullSequence);
         sequence.append();
         sequence.append();
         sequence.append();
@@ -102,13 +100,14 @@ describe("Sequence", function () {
     });
 
     it("determines its size", function () {
-        generator.sequence = [2, 1, 0, 2, 3];
+        var fiveElementsSequence = [2, 1, 0, 2, 3];
+        generator.changeSequence(fiveElementsSequence);
         sequence.append();
         sequence.append();
         sequence.append();
         sequence.append();
         sequence.append();
 
-        expect(sequence.size()).toBe(5);
+        expect(sequence.size()).toBe(fiveElementsSequence.length);
     });
 });

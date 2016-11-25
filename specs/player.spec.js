@@ -4,18 +4,23 @@
 "use strict";
 
 describe("Player", function () {
-    var generator, board, simon, player;
+    /** @var {ArrayGenerator} Fake generator */
+    var generator;
+
+    /** @var {Object} Fake spy of Board */
+    var board;
+
+    /** @var {Simon} */
+    var simon;
+
+    /** @var {Player} */
+    var player;
 
     beforeEach(function () {
         board = {
             animateBox: function (box) {}
         };
-        generator = {
-            sequence: [3, 2, 1, 0],
-            generate: function() {
-                return this.sequence.shift();
-            }
-        };
+        generator = new ArrayGenerator([3, 2, 1, 0]);
         player = new Player(board);
         simon = new Simon(board, new Sequence(generator));
     });
@@ -25,8 +30,8 @@ describe("Player", function () {
         spyOn(board, "animateBox");
 
         simon.start();
-        expect(player.matches(simonNumber, simon)).toBe(true);
 
+        expect(player.matches(simonNumber, simon)).toBe(true);
         expect(board.animateBox).toHaveBeenCalledWith(simonNumber);
     });
 
@@ -37,6 +42,7 @@ describe("Player", function () {
 
         expect(player.matches(simonNumber, simon)).toBe(true);
     });
+
     it("verifies a full sequence with several elements", function () {
         var simonNumbers = [3, 2, 1, 0];
 
@@ -51,6 +57,7 @@ describe("Player", function () {
 
         expect(player.isWinner(simon)).toBe(true);
     });
+
     it("updates the board if player does not win", function () {
         var wrongNumber = 10;
         simon = {
@@ -59,12 +66,13 @@ describe("Player", function () {
 
         expect(player.matches(wrongNumber, simon)).toBe(false);
     });
+
     it("resets its sequence", function () {
-        var simon = new Simon(null, new Sequence(), null);
+        var simon = new Simon(null, new Sequence(null));
 
         player.restart();
 
-        // Comparing 2 empty sequence shouldbe true
+        // Comparing 2 empty sequences should be true
         expect(player.isWinner(simon)).toBe(true);
     })
 });
