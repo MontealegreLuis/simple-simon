@@ -45,7 +45,7 @@ describe("Board", function () {
         var box = 3;
         spyOn(animation, "animateBox");
 
-        board.animateBox(box);
+        board.highlightBox(box);
 
         expect(animation.animateBox).toHaveBeenCalledWith(box);
     });

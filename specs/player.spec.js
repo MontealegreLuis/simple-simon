@@ -18,7 +18,7 @@ describe("Player", function () {
 
     beforeEach(function () {
         board = {
-            animateBox: function (box) {}
+            highlightBox: function (box) {}
         };
         generator = new ArrayGenerator([3, 2, 1, 0]);
         player = new Player(board);
@@ -27,12 +27,12 @@ describe("Player", function () {
 
     it("animates the current box", function () {
         var simonNumber = 3;
-        spyOn(board, "animateBox");
+        spyOn(board, "highlightBox");
 
         simon.start();
 
         expect(player.matches(simonNumber, simon)).toBe(true);
-        expect(board.animateBox).toHaveBeenCalledWith(simonNumber);
+        expect(board.highlightBox).toHaveBeenCalledWith(simonNumber);
     });
 
     it("verifies a sequence with a single element", function () {

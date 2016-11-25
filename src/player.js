@@ -25,7 +25,7 @@
         var play = function (box) {
             sequence = sequence || [];
             sequence.push(box);
-            board.animateBox(box);
+            board.highlightBox(box);
         };
 
         /**
