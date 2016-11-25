@@ -4,9 +4,16 @@
 "use strict";
 
 describe("SequenceAnimation", function () {
+    /** @var {Object} Fake spy for the board boxes */
     var boxes;
+
+    /** @var {ArrayGenerator} Fake sequence generator */
     var generator;
+
+    /** @var {Sequence} */
     var sequence;
+
+    /** @var {SequenceAnimation} */
     var animation;
 
     beforeEach(function() {
@@ -15,12 +22,7 @@ describe("SequenceAnimation", function () {
             animate: function () {}
         };
         spyOn(boxes, "animate");
-        generator = {
-            sequence: null,
-            generate: function() {
-                return this.sequence.shift();
-            }
-        };
+        generator = new ArrayGenerator();
         sequence = new Sequence(generator);
         animation = new SequenceAnimation(sequence, boxes);
     });
@@ -31,7 +33,7 @@ describe("SequenceAnimation", function () {
 
     it("animates a single element", function () {
         var element = 4;
-        generator.sequence = [element];
+        generator.changeSequence([element]);
         sequence.append();
 
         animation.animate();
@@ -41,7 +43,7 @@ describe("SequenceAnimation", function () {
     });
 
     it("animates a sequence with several elements", function () {
-        generator.sequence = [4, 3, 0];
+        generator.changeSequence([4, 3, 0]);
         sequence.append();
         sequence.append();
         sequence.append();
