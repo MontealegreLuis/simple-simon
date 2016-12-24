@@ -10,8 +10,8 @@ describe("Board", function () {
     /** @var {Board} */
     var board;
 
-    /** @var {Object} Fake spy for the board's panel */
-    var panel;
+    /** @var {Object} Fake spy for the board's display */
+    var display;
 
     /** @var {Object} Fake spy for the animation's audio */
     var audio;
@@ -21,16 +21,15 @@ describe("Board", function () {
             animate: function () {},
             animateBoxNumbered: function () {}
         };
-        panel = {
-            removeClass: function () {},
-            addClass: function () {},
-            children: function () {},
-            html: function () {}
+        display = {
+            gameOverMessage: function () {},
+            welcomeMessage: function () {},
+            updateScore: function () {}
         };
         audio = {
             play: function () {}
         };
-        board = new Board(animation, panel, audio);
+        board = new Board(animation, display, audio);
     });
 
     it("animates a full sequence", function () {
@@ -51,42 +50,28 @@ describe("Board", function () {
     });
 
     it("gets highlighted when the game is over", function () {
-        spyOn(panel, "removeClass").and.returnValue(panel);
-        spyOn(panel, "addClass");
-        spyOn(panel, "children").and.returnValue(panel);
-        spyOn(panel, "html");
         spyOn(audio, "play");
+        spyOn(display, "gameOverMessage");
 
         board.gameOver();
 
         expect(audio.play).toHaveBeenCalled();
-        expect(panel.removeClass).toHaveBeenCalled();
-        expect(panel.addClass).toHaveBeenCalled();
-        expect(panel.children).toHaveBeenCalled();
-        expect(panel.html).toHaveBeenCalled();
+        expect(display.gameOverMessage).toHaveBeenCalled();
     });
 
-    it("resets its styling when the game starts", function () {
-        spyOn(panel, "removeClass").and.returnValue(panel);
-        spyOn(panel, "addClass");
-        spyOn(panel, "children").and.returnValue(panel);
-        spyOn(panel, "html");
+    it("shows a welcome message when the game starts", function () {
+        spyOn(display, "welcomeMessage");
 
         board.reset();
 
-        expect(panel.removeClass).toHaveBeenCalled();
-        expect(panel.addClass).toHaveBeenCalled();
-        expect(panel.children).toHaveBeenCalled();
-        expect(panel.html).toHaveBeenCalled();
+        expect(display.welcomeMessage).toHaveBeenCalled();
     });
 
     it("updates the player score", function () {
-        spyOn(panel, "children").and.returnValue(panel);
-        spyOn(panel, "html");
+        spyOn(display, "updateScore");
 
         board.updateScore(2);
 
-        expect(panel.children).toHaveBeenCalled();
-        expect(panel.html).toHaveBeenCalled();
+        expect(display.updateScore).toHaveBeenCalled();
     });
 });

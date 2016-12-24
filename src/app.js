@@ -12,7 +12,7 @@
                 new Audio('audio/box03.mp3'),
                 new Audio('audio/box04.mp3')
             ])),
-            $("[data-board]"),
+            new Display($("[data-board]")),
             new Audio('audio/doh.mp3')
         ),
         new Simon(sequence),

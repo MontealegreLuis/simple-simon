@@ -6,42 +6,25 @@
 
     /**
      * @param {BoardAnimation} animation
-     * @param {jQuery} panel
+     * @param {Display} display
      * @param {Audio} gameOverSound
      * @constructor
      */
-    function Board(animation, panel, gameOverSound) {
+    function Board(animation, display, gameOverSound) {
         this.gameOver = function () {
             gameOverSound.play();
-            panel
-                .removeClass("panel-default")
-                .addClass("panel-danger")
-            ;
-            panel
-                .children("[data-board-title]")
-                .html("<strong>Game over...</strong>")
-            ;
+            display.gameOverMessage("Game over...");
         };
 
         this.reset = function () {
-            panel
-                .removeClass("panel-danger")
-                .addClass("panel-default")
-            ;
-            panel
-                .children("[data-board-title]")
-                .html("<strong>Simple Simon</strong>")
-            ;
+            display.welcomeMessage("Simple Simon");
         };
 
         /**
          * @param {Number} currentScore
          */
         this.updateScore = function (currentScore) {
-            panel
-                .children(".panel-heading")
-                .html("<strong>Score " + currentScore + "</strong>")
-            ;
+            display.updateScore(currentScore);
         };
 
         this.animateSequence = function () {
