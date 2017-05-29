@@ -3,38 +3,38 @@
  */
 "use strict";
 
-describe("Game", function () {
+describe("Game", () => {
     // Spies
-    var player, simon, board;
+    let player, simon, board;
 
-    var sequenceSize = 3;
+    let sequenceSize = 3;
 
     /** @var {Game} */
-    var game;
+    let game;
 
-    beforeEach(function () {
+    beforeEach(() => {
         player = {
-            winsTurn: function () { return true; },
-            winsRound: function () { return true; },
-            restart: function () {},
-            play: function () {}
+            winsTurn: () => { return true; },
+            winsRound: () => { return true; },
+            restart: () => {},
+            play: () => {}
         };
         simon = {
-            start: function(){},
-            nextRound: function(){},
-            roundNumber: function () { return sequenceSize; }
+            start: () => {},
+            nextRound: () => {},
+            roundNumber: () => { return sequenceSize; }
         };
         board = {
-            updateScore: function () {},
-            animateSequence: function() {},
-            reset: function () {},
-            gameOver: function () {},
-            highlightBox: function () {}
+            updateScore: () => {},
+            animateSequence: () => {},
+            reset: () => {},
+            gameOver: () => {},
+            highlightBox: () => {}
         };
         game = new Game(board, simon, player);
     });
 
-    it("starts the game", function () {
+    it("starts the game", () => {
         spyOn(simon, "start");
         spyOn(board, "animateSequence");
         spyOn(player, "restart");
@@ -48,9 +48,9 @@ describe("Game", function () {
         expect(board.animateSequence).toHaveBeenCalled();
     });
 
-    it("finishes the game if the player's choice is incorrect", function(){
-        var wrongBox = 5;
-        player.winsTurn = function () { return false; };
+    it("finishes the game if the player's choice is incorrect", () => {
+        const wrongBox = 5;
+        player.winsTurn = () => { return false; };
         spyOn(board, "gameOver");
 
         game.play(wrongBox);
@@ -58,9 +58,9 @@ describe("Game", function () {
         expect(board.gameOver).toHaveBeenCalled();
     });
 
-    it("continues if the player's sequence is correct but incomplete", function () {
-        var correctBox = 5;
-        player.winsRound = function () { return false; };
+    it("continues if the player's sequence is correct but incomplete", () => {
+        const correctBox = 5;
+        player.winsRound = () => { return false; };
         spyOn(simon, "nextRound");
         spyOn(board, "updateScore");
 
@@ -70,8 +70,8 @@ describe("Game", function () {
         expect(simon.nextRound).not.toHaveBeenCalled();
     });
 
-    it("generates a new round if the player's sequence is correct and complete", function () {
-        var correctBox = 5;
+    it("generates a new round if the player's sequence is correct and complete", () => {
+        const correctBox = 5;
         spyOn(simon, "nextRound");
         spyOn(board, "animateSequence");
         spyOn(player, "restart");

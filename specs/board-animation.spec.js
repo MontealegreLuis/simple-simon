@@ -3,7 +3,7 @@
  */
 "use strict";
 
-describe("BoardAnimation", function () {
+describe("BoardAnimation", () => {
     /** @var {Object} Fake spy for the board boxes */
     let boxes;
 
@@ -16,10 +16,10 @@ describe("BoardAnimation", function () {
     /** @var {BoardAnimation} */
     let animation;
 
-    beforeEach(function() {
+    beforeEach(() => {
         jasmine.clock().install();
         boxes = {
-            animate: function () {}
+            animate: () => {}
         };
         spyOn(boxes, "animate");
         generator = new ArrayGenerator();
@@ -27,12 +27,12 @@ describe("BoardAnimation", function () {
         animation = new BoardAnimation(sequence, boxes);
     });
 
-    afterEach(function() {
+    afterEach(() => {
         jasmine.clock().uninstall();
     });
 
-    it("animates a single element", function () {
-        var element = 4;
+    it("animates a single element", () => {
+        const element = 4;
         generator.changeSequence([element]);
         sequence.append();
 
@@ -42,7 +42,7 @@ describe("BoardAnimation", function () {
         expect(boxes.animate).toHaveBeenCalledWith(element);
     });
 
-    it("animates a sequence with several elements", function () {
+    it("animates a sequence with several elements", () => {
         generator.changeSequence([4, 3, 0]);
         sequence.append();
         sequence.append();
@@ -58,7 +58,7 @@ describe("BoardAnimation", function () {
         expect(boxes.animate).toHaveBeenCalledWith(0);
     });
 
-    it("animates a specific box", function () {
+    it("animates a specific box", () => {
         animation.animateBoxNumbered(4);
 
         expect(boxes.animate).toHaveBeenCalledWith(4);

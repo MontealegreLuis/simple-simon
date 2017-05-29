@@ -3,7 +3,7 @@
  */
 "use strict";
 
-describe("Player", function () {
+describe("Player", () => {
     /** @var {ArrayGenerator} Fake generator */
     let generator;
 
@@ -16,25 +16,25 @@ describe("Player", function () {
     /** @var {Player} */
     let player;
 
-    beforeEach(function () {
+    beforeEach(() => {
         board = {
-            highlightBox: function (box) {}
+            highlightBox: (box) => {}
         };
         generator = new ArrayGenerator([3, 2, 1, 0]);
         player = new Player(board);
         simon = new Simon(new Sequence(generator));
     });
 
-    it("verifies a sequence with a single element", function () {
-        var simonNumber = 3;
+    it("verifies a sequence with a single element", () => {
+        const simonNumber = 3;
 
         simon.start();
 
         expect(player.winsTurn(simon)).toBe(true);
     });
 
-    it("verifies a full sequence with several elements", function () {
-        var simonNumbers = [3, 2, 1, 0];
+    it("verifies a full sequence with several elements", () => {
+        const simonNumbers = [3, 2, 1, 0];
 
         simon.start();
         player.play(simonNumbers[0]);
@@ -48,13 +48,13 @@ describe("Player", function () {
         expect(player.winsRound(simon)).toBe(true);
     });
 
-    it("updates the board if player does not win", function () {
-        simon.verify = function () { return false; };
+    it("updates the board if player does not win", () => {
+        simon.verify = () => { return false; };
 
         expect(player.winsTurn(simon)).toBe(false);
     });
 
-    it("resets its sequence", function () {
+    it("resets its sequence", () => {
         player.restart();
 
         // Comparing 2 empty sequences should be true

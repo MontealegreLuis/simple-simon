@@ -3,21 +3,22 @@
  */
 "use strict";
 
-describe("Boxes", function () {
-    var audio = {
-        play: function () {}
+describe("Boxes", () => {
+    let audio = {
+        play: () => {}
     };
-    var boxesAudio = [audio, audio, audio, audio];
-    var $boxes = {
-        eq: function () {},
-        animate: function(){ return this; }
+    let boxesAudio = [audio, audio, audio, audio];
+    let $boxes = {
+        eq: () => {},
+        animate: function () { return this; }
     };
-    it("animates the first box", function () {
+
+    it("animates the first box", () => {
         spyOn($boxes, "eq").and.returnValue($boxes);
         spyOn(audio, "play");
 
-        var firstBox = 0;
-        var boxes = new Boxes($boxes, boxesAudio);
+        const firstBox = 0;
+        const boxes = new Boxes($boxes, boxesAudio);
 
         boxes.animate(firstBox);
 
@@ -25,12 +26,12 @@ describe("Boxes", function () {
         expect(audio.play).toHaveBeenCalled();
     });
 
-    it("animates the last box", function () {
+    it("animates the last box", () => {
         spyOn($boxes, "eq").and.returnValue($boxes);
         spyOn(audio, "play");
 
-        var lastBox = 3;
-        var boxes = new Boxes($boxes, boxesAudio);
+        const lastBox = 3;
+        const boxes = new Boxes($boxes, boxesAudio);
 
         boxes.animate(lastBox);
 

@@ -3,30 +3,30 @@
  */
 "use strict";
 
-describe("Simon", function () {
+describe("Simon", () => {
     /** @var {ArrayGenerator} Fake sequence generator */
-    var generator;
+    let generator;
 
     /** @var {Object} Fake spy for the Board */
-    var board;
+    let board;
 
     /** @var {Sequence} */
-    var sequence;
+    let sequence;
 
     /** @var {Simon} */
-    var simon;
+    let simon;
 
-    beforeEach(function () {
+    beforeEach(() => {
         board = {
-            animateSequence: function () {}
+            animateSequence: () => {}
         };
         generator = new ArrayGenerator();
         sequence = new Sequence(generator);
         simon = new Simon(sequence);
     });
 
-    it("verifies if player's sequence is correct after first round", function () {
-        var singleElementSequence = [3];
+    it("verifies if player's sequence is correct after first round", () => {
+        const singleElementSequence = [3];
         generator.changeSequence(singleElementSequence);
 
         simon.start();
@@ -34,8 +34,8 @@ describe("Simon", function () {
         expect(simon.verify(singleElementSequence)).toBe(true);
     });
 
-    it("verifies if player's sequence is correct after several rounds", function () {
-        var playerSequence = [3, 2, 1];
+    it("verifies if player's sequence is correct after several rounds", () => {
+        const playerSequence = [3, 2, 1];
         generator.changeSequence(playerSequence);
         simon.start();
         simon.nextRound();
@@ -44,8 +44,8 @@ describe("Simon", function () {
         expect(simon.verify(playerSequence)).toBe(true);
     });
 
-    it("verifies if player's sequence is correct after all rounds", function () {
-        var playerSequence = [3, 2, 1, 0];
+    it("verifies if player's sequence is correct after all rounds", () => {
+        const playerSequence = [3, 2, 1, 0];
         generator.changeSequence(playerSequence);
         simon.start();
         simon.nextRound();
@@ -55,7 +55,7 @@ describe("Simon", function () {
         expect(simon.isComplete(playerSequence)).toBe(true);
     });
 
-    it("knows the current round number", function () {
+    it("knows the current round number", () => {
         sequence.append();
         sequence.append();
         sequence.append();

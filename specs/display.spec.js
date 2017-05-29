@@ -3,22 +3,22 @@
  */
 "use strict";
 
-describe("Display", function () {
-    var $panel;
-    var display;
+describe("Display", () => {
+    let $panel;
+    let display;
 
-    beforeEach(function () {
+    beforeEach(() => {
         $panel = {
-            html: function () {},
-            addClass: function () {},
+            html: () => {},
+            addClass: () => {},
             removeClass: function () { return this; },
             children: function () { return this; }
         };
         display = new Display($panel);
     });
 
-    it("shows a welcome message", function () {
-        var message = "Simple Simon";
+    it("shows a welcome message", () => {
+        const message = "Simple Simon";
         spyOn($panel, "html");
 
         display.welcomeMessage(message);
@@ -26,8 +26,8 @@ describe("Display", function () {
         expect($panel.html.calls.mostRecent().args[0]).toMatch(message);
     });
 
-    it("shows a game over message", function () {
-        var message = "Game over...";
+    it("shows a game over message", () => {
+        const message = "Game over...";
         spyOn($panel, "html");
 
         display.gameOverMessage(message);
@@ -35,8 +35,8 @@ describe("Display", function () {
         expect($panel.html.calls.mostRecent().args[0]).toMatch(message);
     });
 
-    it("displays the current score", function () {
-        var score = "5";
+    it("displays the current score", () => {
+        const score = "5";
         spyOn($panel, "html");
 
         display.updateScore(score);
