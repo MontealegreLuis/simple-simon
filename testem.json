@@ -11,6 +11,6 @@
     "specs/**/*.js"
   ],
   "src_files_ignore": [
-    "src/app.js"
+    "src/main.js"
   ]
 }

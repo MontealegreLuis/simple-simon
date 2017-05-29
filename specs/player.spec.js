@@ -5,16 +5,16 @@
 
 describe("Player", function () {
     /** @var {ArrayGenerator} Fake generator */
-    var generator;
+    let generator;
 
     /** @var {Object} Fake spy of Board */
-    var board;
+    let board;
 
     /** @var {Simon} */
-    var simon;
+    let simon;
 
     /** @var {Player} */
-    var player;
+    let player;
 
     beforeEach(function () {
         board = {
@@ -30,7 +30,7 @@ describe("Player", function () {
 
         simon.start();
 
-        expect(player.winsTurn(simonNumber, simon)).toBe(true);
+        expect(player.winsTurn(simon)).toBe(true);
     });
 
     it("verifies a full sequence with several elements", function () {
@@ -49,10 +49,9 @@ describe("Player", function () {
     });
 
     it("updates the board if player does not win", function () {
-        var wrongNumber = 10;
         simon.verify = function () { return false; };
 
-        expect(player.winsTurn(wrongNumber, simon)).toBe(false);
+        expect(player.winsTurn(simon)).toBe(false);
     });
 
     it("resets its sequence", function () {

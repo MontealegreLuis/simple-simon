@@ -1,21 +1,19 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-(function (window) {
-    "use strict";
-
+class RandomGenerator {
     /**
      * Generates random integer values between `min` and `max`
      *
      * @param {number} min Minimum value
      * @param {number} max Maximum value
-     * @constructor
      */
-    function RandomGenerator(min, max) {
-        this.generate = function() {
-            return Math.floor(Math.random() * (max - min + 1) + min);
-        };
+    constructor(min, max) {
+        this.min = min;
+        this.max = max;
     }
 
-    window.RandomGenerator = RandomGenerator;
-})(window);
+    generate() {
+        return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
+    }
+}

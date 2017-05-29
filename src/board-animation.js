@@ -1,37 +1,32 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-(function (window) {
-    "use strict";
-
+class BoardAnimation {
     /**
      * @param {Sequence} sequence
      * @param {Boxes} boxes
-     * @constructor
      */
-    function BoardAnimation(sequence, boxes) {
-        var defaultDuration = 1000;
+    constructor(sequence, boxes) {
+        this.sequence = sequence;
+        this.boxes = boxes;
+        this._defaultDuration = 1000;
+    }
 
-        var animateBox = function () {
-            boxes.animate(sequence.current());
-            sequence.next();
-            if (!sequence.valid()) {
-                clearInterval(animateBox.intervalId)
-            }
-        };
+    animate() {
+        this.sequence.rewind();
+        this._animateBox.intervalId = setInterval(() => this._animateBox(), this._defaultDuration);
+    }
 
-        this.animate = function () {
-            sequence.rewind();
-            animateBox.intervalId = setInterval(animateBox, defaultDuration);
-        };
-
-        /**
-         * @param {Number} sequenceNumber
-         */
-        this.animateBoxNumbered = function (sequenceNumber) {
-            boxes.animate(sequenceNumber);
+    _animateBox() {
+        this.boxes.animate(this.sequence.current());
+        this.sequence.next();
+        if (!this.sequence.valid()) {
+            clearInterval(this._animateBox.intervalId)
         }
     }
 
-    window.BoardAnimation = BoardAnimation;
-})(window);
+    /** @param {Number} sequenceNumber */
+    animateBoxNumbered(sequenceNumber) {
+        this.boxes.animate(sequenceNumber);
+    }
+}

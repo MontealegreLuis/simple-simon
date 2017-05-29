@@ -5,16 +5,16 @@
 
 describe("BoardAnimation", function () {
     /** @var {Object} Fake spy for the board boxes */
-    var boxes;
+    let boxes;
 
     /** @var {ArrayGenerator} Fake sequence generator */
-    var generator;
+    let generator;
 
     /** @var {Sequence} */
-    var sequence;
+    let sequence;
 
     /** @var {BoardAnimation} */
-    var animation;
+    let animation;
 
     beforeEach(function() {
         jasmine.clock().install();

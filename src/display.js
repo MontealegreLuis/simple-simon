@@ -1,43 +1,47 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-(function (window) {
-    "use strict";
+class Display {
 
-    var formatMessage = function (message) {
-        return "<strong>" + message + "</strong>";
-    };
-
-    function Display($panel) {
-        this.gameOverMessage = function (message) {
-            $panel
-                .removeClass("panel-default")
-                .addClass("panel-danger")
-            ;
-            $panel
-                .children("[data-board-title]")
-                .html(formatMessage(message))
-            ;
-        };
-
-        this.welcomeMessage = function (message) {
-            $panel
-                .removeClass("panel-danger")
-                .addClass("panel-default")
-            ;
-            $panel
-                .children("[data-board-title]")
-                .html(formatMessage(message))
-            ;
-        };
-
-        this.updateScore = function (currentScore) {
-            $panel
-                .children(".panel-heading")
-                .html(formatMessage("Score " + currentScore))
-            ;
-        };
+    /** @param {jQuery} $panel */
+    constructor($panel) {
+        this.$panel = $panel;
     }
 
-    window.Display = Display;
-})(window);
+    /** @param {String} message */
+    gameOverMessage(message) {
+        this.$panel
+            .removeClass("panel-default")
+            .addClass("panel-danger")
+        ;
+        this.$panel
+            .children("[data-board-title]")
+            .html(Display._formatMessage(message))
+        ;
+    }
+
+    /** @param {String} message */
+    welcomeMessage(message) {
+        this.$panel
+            .removeClass("panel-danger")
+            .addClass("panel-default")
+        ;
+        this.$panel
+            .children("[data-board-title]")
+            .html(Display._formatMessage(message))
+        ;
+    }
+
+    /** @param {Number} currentScore */
+    updateScore(currentScore) {
+        this.$panel
+            .children(".panel-heading")
+            .html(Display._formatMessage("Score " + currentScore))
+        ;
+    }
+
+    /** @param {String} message */
+    static _formatMessage(message) {
+        return "<strong>" + message + "</strong>";
+    }
+}

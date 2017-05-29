@@ -1,25 +1,23 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-(function (window) {
+class Boxes {
     /**
      * @param {jQuery} $boxes
      * @param {Array} boxesAudio
-     * @constructor
      */
-    function Boxes($boxes, boxesAudio) {
-        /**
-         * @param {Number} index
-         */
-        this.animate = function (index) {
-            boxesAudio[index].play();
-            $boxes
-                .eq(index)
-                .animate({opacity: 1})
-                .animate({opacity: .5})
-            ;
-        };
+    constructor($boxes, boxesAudio) {
+        this.$boxes = $boxes;
+        this.boxesAudio = boxesAudio;
     }
 
-    window.Boxes = Boxes;
-})(window);
+    /** @param {Number} index */
+    animate(index) {
+        this.boxesAudio[index].play();
+        this.$boxes
+            .eq(index)
+            .animate({opacity: 1})
+            .animate({opacity: .5})
+        ;
+    }
+}

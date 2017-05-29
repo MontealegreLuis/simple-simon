@@ -1,59 +1,44 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-(function (window) {
-    "use strict";
-
+class Player {
     /**
-     * A player is able to add boxes to her sequence and verify if the choice was
-     * correct
-     *
-     * @constructor
+     * A player is able to add boxes to her sequence and verify if the choice was correct
      */
-    function Player() {
-        /**
-         * @type {Array} Contains the player's sequence
-         */
-        var sequence = [];
-
-        /**
-         * Animate the box and add it to the player's sequence
-         *
-         * @param {Number} box
-         */
-        this.play = function (box) {
-            sequence.push(box);
-        };
-
-        /**
-         * Add the box to the sequence and verify if the current sequence is correct
-         *
-         * @param {Number} box
-         * @param {Simon} simon
-         * @returns boolean
-         */
-        this.winsTurn = function (box, simon) {
-            return simon.verify(sequence);
-        };
-
-        /**
-         * Verifies if the whole sequence is correct
-         *
-         * @param {Simon} simon
-         * @returns {Boolean}
-         */
-        this.winsRound = function (simon) {
-            return simon.isComplete(sequence);
-        };
-
-        /**
-         * The player sequence needs to be cleaned up every time it guesses the
-         * current Simon's sequence
-         */
-        this.restart = function() {
-            sequence = [];
-        }
+    constructor() {
+        this.restart();
     }
 
-    window.Player = Player;
-})(window);
+    /** @param {Number} box*/
+    play(box) {
+        this.sequence.push(box);
+    }
+
+    /**
+     * Add the box to the sequence and verify if the current sequence is correct
+     *
+     * @param {Simon} simon
+     * @returns boolean
+     */
+    winsTurn(simon) {
+        return simon.verify(this.sequence);
+    };
+
+    /**
+     * Verifies if the whole sequence is correct
+     *
+     * @param {Simon} simon
+     * @returns {Boolean}
+     */
+    winsRound(simon) {
+        return simon.isComplete(this.sequence);
+    }
+
+    /**
+     * The player sequence needs to be cleaned up every time it guesses the
+     * current Simon's sequence
+     */
+    restart() {
+        this.sequence = [];
+    }
+}
