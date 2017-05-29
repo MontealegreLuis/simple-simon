@@ -3,6 +3,15 @@
 [![Build Status](https://travis-ci.org/MontealegreLuis/simple-simon.svg?branch=master)](https://travis-ci.org/MontealegreLuis/simple-simon)
 [![codebeat badge](https://codebeat.co/badges/fc41b73e-e111-4349-bc44-6eb913087c40)](https://codebeat.co/projects/github-com-montealegreluis-simple-simon)
 
+## Installation
+
+In order to play the game you'll need to bundle the application using `make` and `uglify`.
+
+```bash
+$ npm install uglify-js -g  # Install uglify
+$ make build                # Build the application
+```
+
 ## How to play
 
 1. Press `Start game`.
