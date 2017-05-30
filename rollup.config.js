@@ -23,6 +23,11 @@ export default {
         babel({
             exclude: 'node_modules/**',
         }),
-        uglify()
+        uglify({
+            warnings: 'verbose',
+            output: {
+                preamble: '/**\n * This source file is subject to the license that is bundled with this package in the file LICENSE.\n */'
+            }
+        })
     ],
 };
