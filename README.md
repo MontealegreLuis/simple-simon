@@ -4,7 +4,7 @@
 [![codebeat badge](https://codebeat.co/badges/fc41b73e-e111-4349-bc44-6eb913087c40)](https://codebeat.co/projects/github-com-montealegreluis-simple-simon)
 
 This branch uses ES6 classes and modules. If you want to see a simplified ES5 version 
-(it need less tooling) go to the [ES5]() branch please .
+(it need less tooling) go to the [ES5](https://github.com/MontealegreLuis/simple-simon/tree/7aaff85ab482e20cfa7a7da55d79731b75bcafe5) branch please.
 
 ## Installation
 
