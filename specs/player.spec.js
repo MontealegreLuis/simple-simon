@@ -6,7 +6,7 @@ import Simon from '../src/simon';
 import Sequence from '../src/sequence';
 import ArrayGenerator from './fakes/array-generator';
 
-describe("Player", () => {
+describe('Player', () => {
     /** @var {ArrayGenerator} Fake generator */
     let generator;
 
@@ -20,47 +20,49 @@ describe("Player", () => {
     let player;
 
     beforeEach(() => {
-        board = {
-            highlightBox: (box) => {}
-        };
+        board = { highlightBox: (box) => {} };
         generator = new ArrayGenerator([3, 2, 1, 0]);
         player = new Player(board);
         simon = new Simon(new Sequence(generator));
     });
 
-    it("verifies a sequence with a single element", () => {
-        const simonNumber = 3;
+    it('verifies a full sequence with a single element', () => {
+        const correctNumber = 3;
 
         simon.start();
+        player.play(correctNumber);
 
         expect(player.winsTurn(simon)).toBe(true);
     });
 
-    it("verifies a full sequence with several elements", () => {
-        const simonNumbers = [3, 2, 1, 0];
+    it('verifies a full sequence with several elements', () => {
+        const correctNumbers = [3, 2, 1, 0];
 
         simon.start();
-        player.play(simonNumbers[0]);
+        player.play(correctNumbers[0]);
         simon.nextRound();
-        player.play(simonNumbers[1]);
+        player.play(correctNumbers[1]);
         simon.nextRound();
-        player.play(simonNumbers[2]);
+        player.play(correctNumbers[2]);
         simon.nextRound();
-        player.play(simonNumbers[3]);
+        player.play(correctNumbers[3]);
 
         expect(player.winsRound(simon)).toBe(true);
     });
 
-    it("updates the board if player does not win", () => {
-        simon.verify = () => { return false; };
+    it('recognizes an incorrect sequence', () => {
+        const incorrectNumber = 300;
+
+        simon.start();
+        player.play(incorrectNumber);
 
         expect(player.winsTurn(simon)).toBe(false);
     });
 
-    it("resets its sequence", () => {
+    it('restarts with an empty sequence', () => {
         player.restart();
 
         // Comparing 2 empty sequences should be true
         expect(player.winsRound(simon)).toBe(true);
-    })
+    });
 });
