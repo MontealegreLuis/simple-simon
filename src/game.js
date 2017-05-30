@@ -1,7 +1,7 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-class Game {
+export default class Game {
     /**
      * @param {Board} board
      * @param {Simon} simon

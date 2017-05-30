@@ -1,7 +1,7 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-class Display {
+export default class Display {
 
     /** @param {jQuery} $panel */
     constructor($panel) {
@@ -11,11 +11,11 @@ class Display {
     /** @param {String} message */
     gameOverMessage(message) {
         this.$panel
-            .removeClass("panel-default")
-            .addClass("panel-danger")
+            .removeClass('panel-default')
+            .addClass('panel-danger')
         ;
         this.$panel
-            .children("[data-board-title]")
+            .children('[data-board-title]')
             .html(Display._formatMessage(message))
         ;
     }
@@ -23,11 +23,11 @@ class Display {
     /** @param {String} message */
     welcomeMessage(message) {
         this.$panel
-            .removeClass("panel-danger")
-            .addClass("panel-default")
+            .removeClass('panel-danger')
+            .addClass('panel-default')
         ;
         this.$panel
-            .children("[data-board-title]")
+            .children('[data-board-title]')
             .html(Display._formatMessage(message))
         ;
     }
@@ -35,13 +35,13 @@ class Display {
     /** @param {Number} currentScore */
     updateScore(currentScore) {
         this.$panel
-            .children(".panel-heading")
-            .html(Display._formatMessage("Score " + currentScore))
+            .children('.panel-heading')
+            .html(Display._formatMessage(`Score ${currentScore}`))
         ;
     }
 
     /** @param {String} message */
     static _formatMessage(message) {
-        return "<strong>" + message + "</strong>";
+        return `<strong>${message}</strong>`;
     }
 }

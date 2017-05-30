@@ -1,7 +1,7 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-class Player {
+export default class Player {
     /**
      * A player is able to add boxes to her sequence and verify if the choice was correct
      */
@@ -22,7 +22,7 @@ class Player {
      */
     winsTurn(simon) {
         return simon.verify(this.sequence);
-    };
+    }
 
     /**
      * Verifies if the whole sequence is correct

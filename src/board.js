@@ -1,7 +1,7 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-class Board {
+export default class Board {
     /**
      * @param {BoardAnimation} animation
      * @param {Display} display
@@ -15,11 +15,11 @@ class Board {
 
     gameOver() {
         this.gameOverSound.play();
-        this.display.gameOverMessage("Game over...");
+        this.display.gameOverMessage('Game over...');
     }
 
     reset() {
-        this.display.welcomeMessage("Simple Simon");
+        this.display.welcomeMessage('Simple Simon');
     }
 
     /** @param {Number} currentScore */

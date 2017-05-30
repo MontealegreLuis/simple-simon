@@ -1,7 +1,7 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-class Simon {
+export default class Simon {
     /**
      * Generates a sequence of random numbers that a player has to memorize.
      *

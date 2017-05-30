@@ -1,7 +1,10 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-"use strict";
+import Player from '../src/player';
+import Simon from '../src/simon';
+import Sequence from '../src/sequence';
+import ArrayGenerator from './fakes/array-generator';
 
 describe("Player", () => {
     /** @var {ArrayGenerator} Fake generator */

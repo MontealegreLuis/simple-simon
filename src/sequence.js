@@ -1,7 +1,7 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-class Sequence {
+export default class Sequence {
 
     /**
      * @param {RandomGenerator} generator

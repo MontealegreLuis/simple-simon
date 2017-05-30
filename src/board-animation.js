@@ -1,7 +1,7 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-class BoardAnimation {
+export default class BoardAnimation {
     /**
      * @param {Sequence} sequence
      * @param {Boxes} boxes
@@ -21,7 +21,7 @@ class BoardAnimation {
         this.boxes.animate(this.sequence.current());
         this.sequence.next();
         if (!this.sequence.valid()) {
-            clearInterval(this._animateBox.intervalId)
+            clearInterval(this._animateBox.intervalId);
         }
     }
 

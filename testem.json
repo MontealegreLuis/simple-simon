@@ -6,11 +6,5 @@
   "launch_in_ci": [
     "PhantomJS"
   ],
-  "src_files": [
-    "src/**/*.js",
-    "specs/**/*.js"
-  ],
-  "src_files_ignore": [
-    "src/main.js"
-  ]
+  "test_page": "tests.mustache"
 }

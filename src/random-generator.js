@@ -1,7 +1,7 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-class RandomGenerator {
+export default class RandomGenerator {
     /**
      * Generates random integer values between `min` and `max`
      *

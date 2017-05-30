@@ -1,7 +1,7 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-class Boxes {
+export default class Boxes {
     /**
      * @param {jQuery} $boxes
      * @param {Array} boxesAudio

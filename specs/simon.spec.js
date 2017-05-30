@@ -1,7 +1,9 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-"use strict";
+import Simon from '../src/simon';
+import Sequence from '../src/sequence';
+import ArrayGenerator from './fakes/array-generator';
 
 describe("Simon", () => {
     /** @var {ArrayGenerator} Fake sequence generator */
