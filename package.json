@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "test": "testem ci",
-    "bundle": "rollup -c",
-    "pack": "webpack"
+    "ci": "webpack & testem ci",
+    "build": "rollup -c",
+    "test": "webpack & testem"
   },
   "license": "MIT",
   "dependencies": {

@@ -12,7 +12,7 @@ In order to play the game you'll need to bundle the application.
 
 ```bash
 $ npm install      # Install the application dev dependencies
-$ npm run bundle   # Bundle the application using rollup
+$ npm run build    # Bundle the application using rollup
 ```
 
 ## How to play
@@ -28,14 +28,18 @@ Take a look at the original [TV spot](https://www.youtube.com/watch?v=aXV-rHOgEu
 In order to run the tests, you'll need to install `testem`.
 
 ```bash
-$ npm run pack           # Bundle the tests using webpack
 $ npm install testem -g  # Install testem globally
 ```
 
-Once installed, execute:
+Once installed, execute the tests with Chrome
 
 ```bash
-$ testem
+$ npm run test
 ```
 
-It will run the tests using Chrome.
+Alternatively run the tests using PhantomJS
+
+```bash
+$ npm install -g phantomjs-prebuilt # Install PhantomJS if you haven't
+$ npm run ci                        # Run the tests using PhantomJS
+```
