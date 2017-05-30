@@ -2,7 +2,7 @@
   "scripts": {
     "test": "testem ci",
     "bundle": "rollup -c",
-    "webpack": "webpack"
+    "pack": "webpack"
   },
   "license": "MIT",
   "dependencies": {

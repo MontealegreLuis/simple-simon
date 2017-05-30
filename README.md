@@ -5,11 +5,11 @@
 
 ## Installation
 
-In order to play the game you'll need to bundle the application using `make` and `uglify`.
+In order to play the game you'll need to bundle the application.
 
 ```bash
-$ npm install uglify-js -g  # Install uglify
-$ make build                # Build the application
+$ npm install      # Install the application dev dependencies
+$ npm run bundle   # Bundle the application using rollup
 ```
 
 ## How to play
@@ -25,7 +25,8 @@ Take a look at the original [TV spot](https://www.youtube.com/watch?v=aXV-rHOgEu
 In order to run the tests, you'll need to install `testem`.
 
 ```bash
-$ npm install testem -g
+$ npm run pack           # Bundle the tests using webpack
+$ npm install testem -g  # Install testem globally
 ```
 
 Once installed, execute:
