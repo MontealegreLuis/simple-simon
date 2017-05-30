@@ -4,5 +4,7 @@ node_js:
 install:
   - npm install -g phantomjs-prebuilt
   - npm install -g testem
+  - npm install
+  - npm run pack
 script:
   - npm test
