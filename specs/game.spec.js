@@ -3,7 +3,7 @@
  */
 import Game from '../src/game';
 
-describe("Game", () => {
+describe('Game', () => {
     // Spies
     let player, simon, board;
 
@@ -34,11 +34,11 @@ describe("Game", () => {
         game = new Game(board, simon, player);
     });
 
-    it("starts the game", () => {
-        spyOn(simon, "start");
-        spyOn(board, "animateSequence");
-        spyOn(player, "restart");
-        spyOn(board, "reset");
+    it('starts the game', () => {
+        spyOn(simon, 'start');
+        spyOn(board, 'animateSequence');
+        spyOn(player, 'restart');
+        spyOn(board, 'reset');
 
         game.start();
 
@@ -48,21 +48,21 @@ describe("Game", () => {
         expect(board.animateSequence).toHaveBeenCalled();
     });
 
-    it("finishes the game if the player's choice is incorrect", () => {
+    it('finishes the game if the player\'s choice is incorrect', () => {
         const wrongBox = 5;
         player.winsTurn = () => { return false; };
-        spyOn(board, "gameOver");
+        spyOn(board, 'gameOver');
 
         game.play(wrongBox);
 
         expect(board.gameOver).toHaveBeenCalled();
     });
 
-    it("continues if the player's sequence is correct but incomplete", () => {
+    it('continues if the player\'s sequence is correct but incomplete', () => {
         const correctBox = 5;
         player.winsRound = () => { return false; };
-        spyOn(simon, "nextRound");
-        spyOn(board, "updateScore");
+        spyOn(simon, 'nextRound');
+        spyOn(board, 'updateScore');
 
         game.play(correctBox);
 
@@ -70,12 +70,12 @@ describe("Game", () => {
         expect(simon.nextRound).not.toHaveBeenCalled();
     });
 
-    it("generates a new round if the player's sequence is correct and complete", () => {
+    it('generates a new round if the player\'s sequence is correct and complete', () => {
         const correctBox = 5;
-        spyOn(simon, "nextRound");
-        spyOn(board, "animateSequence");
-        spyOn(player, "restart");
-        spyOn(board, "updateScore");
+        spyOn(simon, 'nextRound');
+        spyOn(board, 'animateSequence');
+        spyOn(player, 'restart');
+        spyOn(board, 'updateScore');
 
         game.play(correctBox);
 

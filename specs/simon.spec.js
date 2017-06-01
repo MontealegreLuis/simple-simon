@@ -5,7 +5,7 @@ import Simon from '../src/simon';
 import Sequence from '../src/sequence';
 import ArrayGenerator from './fakes/array-generator';
 
-describe("Simon", () => {
+describe('Simon', () => {
     /** @var {ArrayGenerator} Fake sequence generator */
     let generator;
 
@@ -19,15 +19,13 @@ describe("Simon", () => {
     let simon;
 
     beforeEach(() => {
-        board = {
-            animateSequence: () => {}
-        };
+        board = {animateSequence: () => {}};
         generator = new ArrayGenerator();
         sequence = new Sequence(generator);
         simon = new Simon(sequence);
     });
 
-    it("verifies if player's sequence is correct after first round", () => {
+    it('verifies if player\'s sequence is correct after first round', () => {
         const singleElementSequence = [3];
         generator.changeSequence(singleElementSequence);
 
@@ -36,7 +34,7 @@ describe("Simon", () => {
         expect(simon.verify(singleElementSequence)).toBe(true);
     });
 
-    it("verifies if player's sequence is correct after several rounds", () => {
+    it('verifies if player\'s sequence is correct after several rounds', () => {
         const playerSequence = [3, 2, 1];
         generator.changeSequence(playerSequence);
         simon.start();
@@ -46,7 +44,7 @@ describe("Simon", () => {
         expect(simon.verify(playerSequence)).toBe(true);
     });
 
-    it("verifies if player's sequence is correct after all rounds", () => {
+    it('verifies if player\'s sequence is correct after all rounds', () => {
         const playerSequence = [3, 2, 1, 0];
         generator.changeSequence(playerSequence);
         simon.start();
@@ -57,7 +55,7 @@ describe("Simon", () => {
         expect(simon.isComplete(playerSequence)).toBe(true);
     });
 
-    it("knows the current round number", () => {
+    it('knows the current round number', () => {
         sequence.append();
         sequence.append();
         sequence.append();

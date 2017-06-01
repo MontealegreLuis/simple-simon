@@ -3,17 +3,17 @@
  */
 import Board from '../src/board';
 
-describe("Board", () => {
-    /** @var {Object} Fake spy for the board animations */
+describe('Board', () => {
+    /** @var {Object} Spy for the board animations */
     let animation;
 
     /** @var {Board} */
     let board;
 
-    /** @var {Object} Fake spy for the board's display */
+    /** @var {Object} Spy for the board's display */
     let display;
 
-    /** @var {Object} Fake spy for the animation's audio */
+    /** @var {Object} Spy for the animation's audio */
     let audio;
 
     beforeEach(() => {
@@ -26,32 +26,30 @@ describe("Board", () => {
             welcomeMessage: () => {},
             updateScore: () => {}
         };
-        audio = {
-            play: () => {}
-        };
+        audio = {play: () => {}};
         board = new Board(animation, display, audio);
     });
 
-    it("animates a full sequence", () => {
-        spyOn(animation, "animate");
+    it('animates a full sequence', () => {
+        spyOn(animation, 'animate');
 
         board.animateSequence();
 
         expect(animation.animate).toHaveBeenCalled();
     });
 
-    it("animates a single box", () => {
+    it('animates a single box', () => {
         const box = 3;
-        spyOn(animation, "animateBoxNumbered");
+        spyOn(animation, 'animateBoxNumbered');
 
         board.highlightBox(box);
 
         expect(animation.animateBoxNumbered).toHaveBeenCalledWith(box);
     });
 
-    it("gets highlighted when the game is over", () => {
-        spyOn(audio, "play");
-        spyOn(display, "gameOverMessage");
+    it('gets highlighted when the game is over', () => {
+        spyOn(audio, 'play');
+        spyOn(display, 'gameOverMessage');
 
         board.gameOver();
 
@@ -59,16 +57,16 @@ describe("Board", () => {
         expect(display.gameOverMessage).toHaveBeenCalled();
     });
 
-    it("shows a welcome message when the game starts", () => {
-        spyOn(display, "welcomeMessage");
+    it('shows a welcome message when the game starts', () => {
+        spyOn(display, 'welcomeMessage');
 
         board.reset();
 
         expect(display.welcomeMessage).toHaveBeenCalled();
     });
 
-    it("updates the player score", () => {
-        spyOn(display, "updateScore");
+    it('updates the player score', () => {
+        spyOn(display, 'updateScore');
 
         board.updateScore(2);
 
