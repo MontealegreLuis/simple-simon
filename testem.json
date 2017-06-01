@@ -6,5 +6,5 @@
   "launch_in_ci": [
     "PhantomJS"
   ],
-  "test_page": "tests.mustache"
+  "test_page": "tests.html"
 }
