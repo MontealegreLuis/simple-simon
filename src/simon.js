@@ -15,7 +15,7 @@ export default class Simon {
      * Populate the sequence with the first random value
      */
     start() {
-        this.sequence.clear();
+        this.sequence.empty();
         this.nextRound();
     }
 

@@ -1,15 +1,16 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
+
+/**
+ * Represents an iterable sequence of random numbers
+ */
 export default class Sequence {
 
-    /**
-     * @param {RandomGenerator} generator
-     * @constructor
-     */
+    /** @param {RandomGenerator} generator */
     constructor(generator) {
         this.generator = generator;
-        this.clear();
+        this.empty();
     }
 
     /** @returns {Number} */
@@ -31,7 +32,7 @@ export default class Sequence {
     }
 
     /**
-     * Append an element to this sequence
+     * Append one more random element to this sequence
      */
     append() {
         this._sequence.push(this.generator.generate());
@@ -42,7 +43,7 @@ export default class Sequence {
      * @returns {Boolean}
      */
     isCorrect(playerSequence) {
-        return playerSequence.toString() == this._sequence.slice(0, playerSequence.length).toString();
+        return playerSequence.every((number, i) => number === this._sequence[i]);
     }
 
     /**
@@ -53,7 +54,7 @@ export default class Sequence {
         return this._sequence.length === playerSequence.length && this.isCorrect(playerSequence);
     }
 
-    clear() {
+    empty() {
         this._sequence = [];
         this._index = 0;
     }

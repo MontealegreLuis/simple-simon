@@ -16,7 +16,7 @@ describe('Sequence', () => {
         sequence = new Sequence(generator);
     });
 
-    it('gets the current element', () => {
+    it('gets its only element', () => {
         const onlyElement = 3;
         generator.changeSequence([onlyElement]);
         sequence.append();
@@ -94,10 +94,11 @@ describe('Sequence', () => {
         expect(sequence.isComplete(fullSequence)).toBe(true);
     });
 
-    it('clears the current sequence', () => {
-        sequence.clear();
+    it('starts a new sequence', () => {
+        sequence.empty();
 
         expect(sequence.valid()).toBe(false);
+        expect(sequence.size()).toBe(0);
     });
 
     it('determines its size', () => {
