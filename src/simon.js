@@ -1,12 +1,12 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
+
+/**
+ * Generates a sequence of random numbers that a player has to memorize.
+ */
 export default class Simon {
-    /**
-     * Generates a sequence of random numbers that a player has to memorize.
-     *
-     * @param {Sequence} sequence This game's sequence
-     */
+    /** @param {Sequence} sequence */
     constructor(sequence) {
         this.sequence = sequence;
     }
@@ -32,7 +32,7 @@ export default class Simon {
     }
 
     /**
-     * Verifies that the current player's is correct
+     * Verifies that the current player's sequence is correct
      *
      * @param {Array} playerSequence
      * @return {Boolean}
@@ -42,7 +42,7 @@ export default class Simon {
     }
 
     /**
-     * Returns true only if the whole sequence is correct
+     * Verifies that the whole player's sequence is correct
      *
      * @param {Array} playerSequence
      * @returns {Boolean}
