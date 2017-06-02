@@ -1,26 +1,29 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
+
+/**
+ * A player is able to add boxes to her sequence and verify if the choice was correct
+ */
 export default class Player {
-    /**
-     * A player is able to add boxes to her sequence and verify if the choice was correct
-     */
+
+    /** Start with an empty sequence */
     constructor() {
         this.restart();
     }
 
     /** @param {Number} box*/
-    play(box) {
+    select(box) {
         this.sequence.push(box);
     }
 
     /**
-     * Add the box to the sequence and verify if the current sequence is correct
+     * Verify if the current sequence is correct
      *
      * @param {Simon} simon
      * @returns boolean
      */
-    winsTurn(simon) {
+    isCorrect(simon) {
         return simon.verify(this.sequence);
     }
 

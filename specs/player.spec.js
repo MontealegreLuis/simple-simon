@@ -30,22 +30,22 @@ describe('Player', () => {
         const correctNumber = 3;
 
         simon.start();
-        player.play(correctNumber);
+        player.select(correctNumber);
 
-        expect(player.winsTurn(simon)).toBe(true);
+        expect(player.isCorrect(simon)).toBe(true);
     });
 
     it('verifies a full sequence with several elements', () => {
         const correctNumbers = [3, 2, 1, 0];
 
         simon.start();
-        player.play(correctNumbers[0]);
+        player.select(correctNumbers[0]);
         simon.nextRound();
-        player.play(correctNumbers[1]);
+        player.select(correctNumbers[1]);
         simon.nextRound();
-        player.play(correctNumbers[2]);
+        player.select(correctNumbers[2]);
         simon.nextRound();
-        player.play(correctNumbers[3]);
+        player.select(correctNumbers[3]);
 
         expect(player.winsRound(simon)).toBe(true);
     });
@@ -54,9 +54,9 @@ describe('Player', () => {
         const incorrectNumber = 300;
 
         simon.start();
-        player.play(incorrectNumber);
+        player.select(incorrectNumber);
 
-        expect(player.winsTurn(simon)).toBe(false);
+        expect(player.isCorrect(simon)).toBe(false);
     });
 
     it('restarts with an empty sequence', () => {

@@ -31,19 +31,23 @@ export default class Game {
      * @param {Number} box
      */
     play(box) {
-        this.player.play(box);
+        this.player.select(box);
         this.board.highlightBox(box);
 
-        if (!this.player.winsTurn(this.simon)) {
+        if (!this.player.isCorrect(this.simon)) {
             this.board.gameOver();
             return;
         }
 
         if (this.player.winsRound(this.simon)) {
-            this.board.updateScore(this.simon.roundNumber());
-            this.simon.nextRound();
-            this.board.animateSequence();
-            this.player.restart();
+            this.levelUp();
         }
+    }
+
+    levelUp() {
+        this.board.updateScore(this.simon.roundNumber());
+        this.simon.nextRound();
+        this.board.animateSequence();
+        this.player.restart();
     }
 }

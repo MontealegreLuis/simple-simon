@@ -14,10 +14,10 @@ describe('Game', () => {
 
     beforeEach(() => {
         player = {
-            winsTurn: () => { return true; },
+            isCorrect: () => { return true; },
             winsRound: () => { return true; },
             restart: () => {},
-            play: () => {}
+            select: () => {}
         };
         simon = {
             start: () => {},
@@ -50,7 +50,7 @@ describe('Game', () => {
 
     it('finishes the game if the player\'s choice is incorrect', () => {
         const wrongBox = 5;
-        player.winsTurn = () => { return false; };
+        player.isCorrect = () => { return false; };
         spyOn(board, 'gameOver');
 
         game.play(wrongBox);
