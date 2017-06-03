@@ -1,6 +1,10 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
+
+/**
+ * It updates the UI according to the current state of the game
+ */
 export default class Board {
     /**
      * @param {BoardAnimation} animation

@@ -1,6 +1,10 @@
 /**
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
+
+/**
+ * It represents the interactions between the player, the sequence and the board
+ */
 export default class Game {
     /**
      * @param {Board} board
