@@ -59,8 +59,10 @@ describe('BoardAnimation', () => {
     });
 
     it('animates a specific box', () => {
-        animation.animateBoxNumbered(4);
+        const position = 4;
 
-        expect(boxes.animate).toHaveBeenCalledWith(4);
+        animation.animateBoxAt(position);
+
+        expect(boxes.animate).toHaveBeenCalledWith(position);
     });
 });

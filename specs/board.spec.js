@@ -19,7 +19,7 @@ describe('Board', () => {
     beforeEach(() => {
         animation = {
             animate: () => {},
-            animateBoxNumbered: () => {}
+            animateBoxAt: () => {}
         };
         display = {
             gameOverMessage: () => {},
@@ -40,11 +40,11 @@ describe('Board', () => {
 
     it('animates a single box', () => {
         const box = 3;
-        spyOn(animation, 'animateBoxNumbered');
+        spyOn(animation, 'animateBoxAt');
 
         board.highlightBox(box);
 
-        expect(animation.animateBoxNumbered).toHaveBeenCalledWith(box);
+        expect(animation.animateBoxAt).toHaveBeenCalledWith(box);
     });
 
     it('gets highlighted when the game is over', () => {

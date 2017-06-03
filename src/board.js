@@ -37,6 +37,6 @@ export default class Board {
 
     /** @param {Number} index */
     highlightBox(index) {
-        this.animation.animateBoxNumbered(index);
+        this.animation.animateBoxAt(index);
     }
 }

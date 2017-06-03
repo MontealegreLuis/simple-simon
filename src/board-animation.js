@@ -34,8 +34,8 @@ export default class BoardAnimation {
         }
     }
 
-    /** @param {Number} sequenceNumber */
-    animateBoxNumbered(sequenceNumber) {
-        this.boxes.animate(sequenceNumber);
+    /** @param {Number} position */
+    animateBoxAt(position) {
+        this.boxes.animate(position);
     }
 }
