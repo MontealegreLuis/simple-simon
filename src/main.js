@@ -13,10 +13,9 @@ import Player from './player';
 import Simon from './simon';
 
 const $boxes = $('[data-box]');
-const sequence = new Sequence(new RandomGenerator(0, $boxes.length - 1));
 const game = new Game(
     new Board(
-        new BoardAnimation(sequence, new Boxes($boxes, [
+        new BoardAnimation(new Boxes($boxes, [
             new Audio('audio/box01.mp3'),
             new Audio('audio/box02.mp3'),
             new Audio('audio/box03.mp3'),
@@ -25,7 +24,7 @@ const game = new Game(
         new Display($('[data-board]')),
         new Audio('audio/doh.mp3')
     ),
-    new Simon(sequence),
+    new Simon(new Sequence(new RandomGenerator(0, $boxes.length - 1))),
     new Player()
 );
 $('[data-start-game]').on('click', () => { game.start(); });

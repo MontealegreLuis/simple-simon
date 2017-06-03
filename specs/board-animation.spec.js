@@ -24,7 +24,7 @@ describe('BoardAnimation', () => {
         spyOn(boxes, 'animate');
         generator = new ArrayGenerator();
         sequence = new Sequence(generator);
-        animation = new BoardAnimation(sequence, boxes);
+        animation = new BoardAnimation(boxes);
     });
 
     afterEach(() => {

@@ -2,12 +2,8 @@
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
 export default class BoardAnimation {
-    /**
-     * @param {Sequence} sequence
-     * @param {Boxes} boxes
-     */
-    constructor(sequence, boxes) {
-        this.sequence = sequence;
+    /** @param {Boxes} boxes */
+    constructor(boxes) {
         this.boxes = boxes;
         this._defaultDuration = 1000;
     }
