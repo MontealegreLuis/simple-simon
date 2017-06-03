@@ -27,8 +27,8 @@ export default class Board {
         this.display.updateScore(currentScore);
     }
 
-    animateSequence() {
-        this.animation.animate();
+    animateSequence(sequence) {
+        this.animation.animate(sequence);
     }
 
     /** @param {Number} index */

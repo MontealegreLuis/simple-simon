@@ -36,7 +36,7 @@ describe('BoardAnimation', () => {
         generator.changeSequence([element]);
         sequence.append();
 
-        animation.animate();
+        animation.animate(sequence);
         jasmine.clock().tick(1001);
 
         expect(boxes.animate).toHaveBeenCalledWith(element);
@@ -48,7 +48,7 @@ describe('BoardAnimation', () => {
         sequence.append();
         sequence.append();
 
-        animation.animate();
+        animation.animate(sequence);
         jasmine.clock().tick(1001);
         jasmine.clock().tick(1000);
         jasmine.clock().tick(1000);

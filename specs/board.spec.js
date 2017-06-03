@@ -33,7 +33,7 @@ describe('Board', () => {
     it('animates a full sequence', () => {
         spyOn(animation, 'animate');
 
-        board.animateSequence();
+        board.animateSequence(null);
 
         expect(animation.animate).toHaveBeenCalled();
     });
