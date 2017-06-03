@@ -44,11 +44,11 @@ export default class Game {
         }
 
         if (this.player.winsRound(this.simon)) {
-            this.levelUp();
+            this._levelUp();
         }
     }
 
-    levelUp() {
+    _levelUp() {
         this.board.updateScore(this.simon.roundNumber());
         this.simon.nextRound();
         this.board.animateSequence(this.simon.sequence);
