@@ -10,12 +10,13 @@ export default class BoardAnimation {
     constructor(boxes) {
         this.boxes = boxes;
         this._defaultDuration = 1000;
+        this._animationIntervalId = -1;
     }
 
     /** @param {Sequence} sequence */
     animate(sequence) {
         sequence.rewind();
-        this._animateBoxFrom.intervalId = setInterval(
+        this._animationIntervalId = setInterval(
             () => this._animateBoxFrom(sequence),
             this._defaultDuration
         );
@@ -30,7 +31,7 @@ export default class BoardAnimation {
         this.boxes.animate(sequence.current());
         sequence.next();
         if (!sequence.valid()) {
-            clearInterval(this._animateBoxFrom.intervalId);
+            clearInterval(this._animationIntervalId);
         }
     }
 
