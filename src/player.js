@@ -9,7 +9,7 @@ export default class Player {
 
     /** Start with an empty sequence */
     constructor() {
-        this.restart();
+        this.play();
     }
 
     /** @param {Number} box*/
@@ -41,7 +41,7 @@ export default class Player {
      * The player sequence needs to be cleaned up every time it guesses the
      * current Simon's sequence
      */
-    restart() {
+    play() {
         this.sequence = [];
     }
 }

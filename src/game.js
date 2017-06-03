@@ -22,7 +22,7 @@ export default class Game {
      */
     start() {
         this.board.reset();
-        this.player.restart();
+        this.player.play();
         this.simon.start();
         this.board.animateSequence(this.simon.sequence());
     }
@@ -52,6 +52,6 @@ export default class Game {
         this.board.updateScore(this.simon.roundNumber());
         this.simon.nextRound();
         this.board.animateSequence(this.simon.sequence());
-        this.player.restart();
+        this.player.play();
     }
 }

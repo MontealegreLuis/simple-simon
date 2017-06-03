@@ -16,7 +16,7 @@ describe('Game', () => {
         player = {
             isCorrect: () => { return true; },
             winsRound: () => { return true; },
-            restart: () => {},
+            play: () => {},
             select: () => {}
         };
         simon = {
@@ -39,13 +39,13 @@ describe('Game', () => {
         spyOn(simon, 'start');
         spyOn(simon, 'sequence');
         spyOn(board, 'animateSequence');
-        spyOn(player, 'restart');
+        spyOn(player, 'play');
         spyOn(board, 'reset');
 
         game.start();
 
         expect(board.reset).toHaveBeenCalled();
-        expect(player.restart).toHaveBeenCalled();
+        expect(player.play).toHaveBeenCalled();
         expect(simon.start).toHaveBeenCalled();
         expect(simon.sequence).toHaveBeenCalled();
         expect(board.animateSequence).toHaveBeenCalled();
@@ -77,7 +77,7 @@ describe('Game', () => {
         const correctBox = 5;
         spyOn(simon, 'nextRound');
         spyOn(board, 'animateSequence');
-        spyOn(player, 'restart');
+        spyOn(player, 'play');
         spyOn(board, 'updateScore');
 
         game.play(correctBox);
@@ -85,6 +85,6 @@ describe('Game', () => {
         expect(board.updateScore).toHaveBeenCalledWith(sequenceSize);
         expect(simon.nextRound).toHaveBeenCalled();
         expect(board.animateSequence).toHaveBeenCalled();
-        expect(player.restart).toHaveBeenCalled();
+        expect(player.play).toHaveBeenCalled();
     });
 });

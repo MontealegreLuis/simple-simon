@@ -59,8 +59,8 @@ describe('Player', () => {
         expect(player.isCorrect(simon)).toBe(false);
     });
 
-    it('restarts with an empty sequence', () => {
-        player.restart();
+    it('starts playing with an empty sequence', () => {
+        player.play();
 
         // Comparing 2 empty sequences should be true
         expect(player.winsRound(simon)).toBe(true);
