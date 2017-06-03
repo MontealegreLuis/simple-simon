@@ -24,7 +24,7 @@ export default class Game {
         this.board.reset();
         this.player.restart();
         this.simon.start();
-        this.board.animateSequence(this.simon.sequence);
+        this.board.animateSequence(this.simon.sequence());
     }
 
     /**
@@ -51,7 +51,7 @@ export default class Game {
     _levelUp() {
         this.board.updateScore(this.simon.roundNumber());
         this.simon.nextRound();
-        this.board.animateSequence(this.simon.sequence);
+        this.board.animateSequence(this.simon.sequence());
         this.player.restart();
     }
 }

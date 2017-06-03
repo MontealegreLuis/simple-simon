@@ -56,11 +56,17 @@ describe('Simon', () => {
     });
 
     it('knows the current round number', () => {
+        const sequenceSize = 4;
+
         sequence.append();
         sequence.append();
         sequence.append();
         sequence.append();
 
-        expect(simon.roundNumber()).toBe(4);
+        expect(simon.roundNumber()).toBe(sequenceSize);
+    });
+
+    it('can access its sequence', () => {
+        expect(simon.sequence()).toBe(sequence);
     });
 });

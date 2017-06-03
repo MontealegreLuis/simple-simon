@@ -8,14 +8,18 @@
 export default class Simon {
     /** @param {Sequence} sequence */
     constructor(sequence) {
-        this.sequence = sequence;
+        this._sequence = sequence;
+    }
+
+    sequence() {
+        return this._sequence;
     }
 
     /**
      * Populate the sequence with the first random value
      */
     start() {
-        this.sequence.empty();
+        this._sequence.empty();
         this.nextRound();
     }
 
@@ -23,12 +27,12 @@ export default class Simon {
      * Adds a value to the sequence
      */
     nextRound() {
-        this.sequence.append();
+        this._sequence.append();
     }
 
     /** @returns {Number} */
     roundNumber() {
-        return this.sequence.size();
+        return this._sequence.size();
     }
 
     /**
@@ -38,7 +42,7 @@ export default class Simon {
      * @return {Boolean}
      */
     verify(playerSequence) {
-        return this.sequence.isCorrect(playerSequence);
+        return this._sequence.isCorrect(playerSequence);
     }
 
     /**
@@ -48,6 +52,6 @@ export default class Simon {
      * @returns {Boolean}
      */
     isComplete(playerSequence) {
-        return this.sequence.isComplete(playerSequence);
+        return this._sequence.isComplete(playerSequence);
     }
 }

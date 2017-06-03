@@ -22,7 +22,8 @@ describe('Game', () => {
         simon = {
             start: () => {},
             nextRound: () => {},
-            roundNumber: () => { return sequenceSize; }
+            roundNumber: () => { return sequenceSize; },
+            sequence: () => {}
         };
         board = {
             updateScore: () => {},
@@ -36,6 +37,7 @@ describe('Game', () => {
 
     it('starts the game', () => {
         spyOn(simon, 'start');
+        spyOn(simon, 'sequence');
         spyOn(board, 'animateSequence');
         spyOn(player, 'restart');
         spyOn(board, 'reset');
@@ -45,6 +47,7 @@ describe('Game', () => {
         expect(board.reset).toHaveBeenCalled();
         expect(player.restart).toHaveBeenCalled();
         expect(simon.start).toHaveBeenCalled();
+        expect(simon.sequence).toHaveBeenCalled();
         expect(board.animateSequence).toHaveBeenCalled();
     });
 
